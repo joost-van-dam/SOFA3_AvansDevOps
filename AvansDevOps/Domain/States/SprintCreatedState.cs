@@ -10,5 +10,20 @@ namespace AvansDevOps.Domain.States
         {
             this.sprint = sprint;
         }
+
+        void ISprintState.ChangeEndDate(DateTime endDate)
+        {
+            this.sprint.endDate = endDate;
+        }
+
+        void ISprintState.ChangeName(string name)
+        {
+            this.sprint.name = name;
+        }
+
+        void ISprintState.ChangeStartDate(DateTime startDate)
+        {
+            this.sprint.startDate = startDate;
+        }
     }
 }

@@ -8,9 +8,9 @@ namespace AvansDevOps.Domain
 {
     internal class Sprint
     {
-        private string name; //willen we een sprint een naam geven?
-        private DateTime startDate;
-        private DateTime endDate;
+        internal string name; //willen we een sprint een naam geven?
+        internal DateTime startDate;
+        internal DateTime endDate;
         private ScrumMaster scrumMaster;
         private LinkedList<Developer> developers;
         private Backlog backlog;
@@ -26,9 +26,27 @@ namespace AvansDevOps.Domain
             this.scrumMaster = scrumMaster;
             this.developers = developers;
             this.backlog = backlog;
-            this.sprintState = new SprintCreatedState();
-            this.sprintTypeStrategy = new PartialProductSprintTypeStrategy(this);
-
+            this.sprintState = new SprintCreatedState(this);
+            this.sprintTypeStrategy = new PartialProductSprintTypeStrategy(); // is nu even de default
         }
+
+        public void SwitchSprintTypeStrategy(ISprintTypeStrategy sprintTypeStrategy)
+        {
+            this.sprintTypeStrategy = sprintTypeStrategy;
+        }
+
+        public void ChangeName(string name)
+        {
+            this.sprintState.ChangeName(name);
+        }
+        public void ChangeStartDate(DateTime startDate)
+        {
+            this.sprintState.ChangeStartDate(startDate);
+        }
+        public void ChangeEndDate(DateTime endDate)
+        {
+            this.sprintState.ChangeEndDate(endDate);
+        }
+
     }
 }
