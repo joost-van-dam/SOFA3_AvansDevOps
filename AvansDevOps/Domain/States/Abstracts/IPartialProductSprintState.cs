@@ -1,9 +1,7 @@
 ﻿namespace AvansDevOps.Domain.States.Abstracts
 {
-    internal interface IPartialProductSprintState
+    internal interface IPartialProductSprintState : ISprintState
     {
-        void ChangeName(string name);
-        void ChangeStartDate(DateTime startDate);
-        void ChangeEndDate(DateTime endDate);
+        //hier logica om door het state pattern heen te lopen
     }
 }

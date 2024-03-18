@@ -1,12 +1,9 @@
 ﻿using AvansDevOps.Domain.People;
-using AvansDevOps.Domain.Stategies;
-using AvansDevOps.Domain.Stategies.Abstracts;
-using AvansDevOps.Domain.States;
 using AvansDevOps.Domain.States.Abstracts;
 
 namespace AvansDevOps.Domain
 {
-    internal class Sprint
+    internal abstract class Sprint
     {
         internal string name; //willen we een sprint een naam geven?
         internal DateTime startDate;
@@ -14,11 +11,10 @@ namespace AvansDevOps.Domain
         private ScrumMaster scrumMaster;
         private LinkedList<Developer> developers;
         private Backlog backlog;
-        private IReleaseSprintState sprintState;
-        private ISprintTypeStrategy sprintTypeStrategy;
+        private ISprintState sprintState;
 
 
-        public Sprint(string name, DateTime startDate, DateTime endDate, ScrumMaster scrumMaster, LinkedList<Developer> developers, Backlog backlog)
+        protected Sprint(string name, DateTime startDate, DateTime endDate, ScrumMaster scrumMaster, LinkedList<Developer> developers, Backlog backlog, ISprintState sprintState)
         {
             this.name = name;
             this.startDate = startDate;
@@ -26,15 +22,10 @@ namespace AvansDevOps.Domain
             this.scrumMaster = scrumMaster;
             this.developers = developers;
             this.backlog = backlog;
-            this.sprintState = new ReleaseSprintCreatedState(this);
-            this.sprintTypeStrategy = new PartialProductSprintTypeStrategy(); // is nu even de default
+            this.sprintState = sprintState;
         }
 
-        public void SwitchSprintTypeStrategy(ISprintTypeStrategy sprintTypeStrategy)
-        {
-            this.sprintTypeStrategy = sprintTypeStrategy;
-        }
-
+        // hiervan vinden we dat dit voor elke instatie van een sprint is
         public void ChangeName(string name)
         {
             this.sprintState.ChangeName(name);
