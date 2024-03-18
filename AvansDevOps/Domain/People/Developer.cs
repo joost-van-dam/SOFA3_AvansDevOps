@@ -2,8 +2,11 @@
 {
     internal class Developer : Person
     {
-        public Developer(string firstName, string lastName) : base(firstName, lastName)
+        private bool isLeadDeveloper;
+
+        public Developer(string firstName, string lastName, bool isLeadDeveloper) : base(firstName, lastName)
         {
+            this.isLeadDeveloper = isLeadDeveloper;
         }
     }
 }

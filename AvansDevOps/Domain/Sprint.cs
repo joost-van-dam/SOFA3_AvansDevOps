@@ -14,7 +14,7 @@ namespace AvansDevOps.Domain
         private ScrumMaster scrumMaster;
         private LinkedList<Developer> developers;
         private Backlog backlog;
-        private ISprintState sprintState;
+        private IReleaseSprintState sprintState;
         private ISprintTypeStrategy sprintTypeStrategy;
 
 
@@ -26,7 +26,7 @@ namespace AvansDevOps.Domain
             this.scrumMaster = scrumMaster;
             this.developers = developers;
             this.backlog = backlog;
-            this.sprintState = new SprintCreatedState(this);
+            this.sprintState = new ReleaseSprintCreatedState(this);
             this.sprintTypeStrategy = new PartialProductSprintTypeStrategy(); // is nu even de default
         }
 

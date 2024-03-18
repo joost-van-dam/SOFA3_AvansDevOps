@@ -1,6 +1,6 @@
 ﻿namespace AvansDevOps.Domain.States.Abstracts
 {
-    internal interface ISprintState
+    internal interface IReleaseSprintState
     {
         void ChangeName(string name);
         void ChangeStartDate(DateTime startDate);

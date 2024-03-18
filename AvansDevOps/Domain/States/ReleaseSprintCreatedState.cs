@@ -2,26 +2,26 @@
 
 namespace AvansDevOps.Domain.States
 {
-    internal class SprintCreatedState : ISprintState
+    internal class ReleaseSprintCreatedState : IReleaseSprintState
     {
         private readonly Sprint sprint;
 
-        public SprintCreatedState(Sprint sprint)
+        public ReleaseSprintCreatedState(Sprint sprint)
         {
             this.sprint = sprint;
         }
 
-        void ISprintState.ChangeEndDate(DateTime endDate)
+        void IReleaseSprintState.ChangeEndDate(DateTime endDate)
         {
             this.sprint.endDate = endDate;
         }
 
-        void ISprintState.ChangeName(string name)
+        void IReleaseSprintState.ChangeName(string name)
         {
             this.sprint.name = name;
         }
 
-        void ISprintState.ChangeStartDate(DateTime startDate)
+        void IReleaseSprintState.ChangeStartDate(DateTime startDate)
         {
             this.sprint.startDate = startDate;
         }
