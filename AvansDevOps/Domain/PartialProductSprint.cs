@@ -1,12 +1,41 @@
 ﻿using AvansDevOps.Domain.People;
+using AvansDevOps.Domain.States;
 using AvansDevOps.Domain.States.Abstracts;
 
 namespace AvansDevOps.Domain
 {
     internal class PartialProductSprint : Sprint
     {
-        public PartialProductSprint(string name, DateTime startDate, DateTime endDate, ScrumMaster scrumMaster, LinkedList<Developer> developers, Backlog backlog, ISprintState sprintState) : base(name, startDate, endDate, scrumMaster, developers, backlog, sprintState)
+        private IPartialProductSprintState sprintState;
+        public PartialProductSprint(string name, DateTime startDate, DateTime endDate, ScrumMaster scrumMaster, LinkedList<Developer> developers, Backlog backlog) : base(name, startDate, endDate, scrumMaster, developers, backlog/*, new PartialProductSprintCreatedState()*/)
         {
+            this.sprintState = new PartialProductSprintCreatedState(this);
+        }
+
+        public void StartSprint()
+        {
+            this.sprintState.StartSprint();
+        }
+        public void FinishSprint()
+        {
+            this.sprintState.FinishSprint();
+        }
+        public void CancelSprint()
+        {
+            this.sprintState.CancelSprint();
+        }
+        public void Release()
+        {
+            this.sprintState.Release();
+        }
+        public void CancelRelease()
+        {
+            this.sprintState.CancelRelease();
+        }
+
+        internal void SetState(IPartialProductSprintState sprintState)
+        {
+            this.sprintState = sprintState;
         }
     }
 }

@@ -4,26 +4,51 @@ namespace AvansDevOps.Domain.States
 {
     internal class ReleaseSprintCreatedState : IReleaseSprintState
     {
-        private readonly Sprint sprint;
+        private readonly ReleaseSprint sprint;
 
-        public ReleaseSprintCreatedState(Sprint sprint)
+        public ReleaseSprintCreatedState(ReleaseSprint sprint)
         {
             this.sprint = sprint;
         }
 
-        void IReleaseSprintState.ChangeEndDate(DateTime endDate)
+        void IReleaseSprintState.CancelRelease()
         {
-            this.sprint.endDate = endDate;
+            throw new NotImplementedException();
         }
 
-        void IReleaseSprintState.ChangeName(string name)
+        void IReleaseSprintState.CancelSprint()
         {
-            this.sprint.name = name;
+            throw new NotImplementedException();
         }
 
-        void IReleaseSprintState.ChangeStartDate(DateTime startDate)
+        void ISprintState.ChangeEndDate(DateTime endDate)
         {
-            this.sprint.startDate = startDate;
+            throw new NotImplementedException();
+        }
+
+        void ISprintState.ChangeName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        void ISprintState.ChangeStartDate(DateTime startDate)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IReleaseSprintState.FinishSprint()
+        {
+            throw new NotImplementedException();
+        }
+
+        void IReleaseSprintState.Release()
+        {
+            throw new NotImplementedException();
+        }
+
+        void IReleaseSprintState.StartSprint()
+        {
+            throw new NotImplementedException();
         }
     }
 }

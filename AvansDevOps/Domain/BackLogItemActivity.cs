@@ -16,7 +16,7 @@ namespace AvansDevOps.Domain
             this.name = name;
             this.description = description;
             this.developer = developer;
-            this.state = new BacklogItemActivityTodoState();
+            this.state = new BacklogItemActivityTodoState(this);
         }
     }
 }

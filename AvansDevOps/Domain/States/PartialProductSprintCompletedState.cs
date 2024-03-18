@@ -2,21 +2,21 @@
 
 namespace AvansDevOps.Domain.States
 {
-    internal class ReleaseSprintReleaseCanceledState : IReleaseSprintState
+    internal class PartialProductSprintCompletedState : IPartialProductSprintState
     {
-        private readonly ReleaseSprint sprint;
+        private readonly PartialProductSprint sprint;
 
-        public ReleaseSprintReleaseCanceledState(ReleaseSprint sprint)
+        public PartialProductSprintCompletedState(PartialProductSprint sprint)
         {
             this.sprint = sprint;
         }
 
-        void IReleaseSprintState.CancelRelease()
+        void IPartialProductSprintState.CancelRelease()
         {
             throw new NotImplementedException();
         }
 
-        void IReleaseSprintState.CancelSprint()
+        void IPartialProductSprintState.CancelSprint()
         {
             throw new NotImplementedException();
         }
@@ -36,19 +36,19 @@ namespace AvansDevOps.Domain.States
             throw new NotImplementedException();
         }
 
-        void IReleaseSprintState.FinishSprint()
+        void IPartialProductSprintState.FinishSprint()
         {
             throw new NotImplementedException();
         }
 
-        void IReleaseSprintState.Release()
+        void IPartialProductSprintState.Release()
         {
             throw new NotImplementedException();
         }
 
-        void IReleaseSprintState.StartSprint()
+        void IPartialProductSprintState.StartSprint()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The sprint has already been completed and can not be started!");
         }
     }
 }
