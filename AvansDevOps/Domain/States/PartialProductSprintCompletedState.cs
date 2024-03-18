@@ -11,9 +11,9 @@ namespace AvansDevOps.Domain.States
             this.sprint = sprint;
         }
 
-        void IPartialProductSprintState.CancelRelease()
+        void IPartialProductSprintState.CompleteSprint()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The sprint has already been completed!");
         }
 
         void IPartialProductSprintState.CancelSprint()
@@ -38,13 +38,9 @@ namespace AvansDevOps.Domain.States
 
         void IPartialProductSprintState.FinishSprint()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The sprint has already been completed, so can not be finished again!");
         }
 
-        void IPartialProductSprintState.Release()
-        {
-            throw new NotImplementedException();
-        }
 
         void IPartialProductSprintState.StartSprint()
         {

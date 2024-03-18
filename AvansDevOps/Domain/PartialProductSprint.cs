@@ -24,13 +24,9 @@ namespace AvansDevOps.Domain
         {
             this.sprintState.CancelSprint();
         }
-        public void Release()
+        public void CompleteSprint()
         {
-            this.sprintState.Release();
-        }
-        public void CancelRelease()
-        {
-            this.sprintState.CancelRelease();
+            this.sprintState.CompleteSprint();
         }
 
         internal void SetState(IPartialProductSprintState sprintState)

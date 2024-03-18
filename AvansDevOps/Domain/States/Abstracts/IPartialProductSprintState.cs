@@ -6,7 +6,6 @@
         void StartSprint();
         void FinishSprint();
         void CancelSprint();
-        void Release();
-        void CancelRelease();
+        void CompleteSprint();
     }
 }
