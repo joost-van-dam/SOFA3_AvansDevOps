@@ -13,7 +13,7 @@ namespace AvansDevOps.Domain.States
 
         void IPartialProductSprintState.CompleteSprint()
         {
-            Console.WriteLine("The sprint has already been canceled, so can not be completed anymoer!");
+            Console.WriteLine("The sprint has already been canceled, so can not be completed anymore!");
         }
 
         void IPartialProductSprintState.CancelSprint()

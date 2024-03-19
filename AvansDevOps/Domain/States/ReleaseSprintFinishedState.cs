@@ -12,12 +12,14 @@ namespace AvansDevOps.Domain.States
 
         void IReleaseSprintState.CancelRelease()
         {
-            throw new NotImplementedException();
+            // hier goedkeuring van product owner of scrum master toevoegen!
+
+            this.sprint.SetState(new ReleaseSprintReleaseCanceledState(this.sprint));
         }
 
         void IReleaseSprintState.CancelSprint()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The sprint has already been finished, so can not be canceled anymore.");
         }
 
         void ISprintState.ChangeEndDate(DateTime endDate)
@@ -37,17 +39,22 @@ namespace AvansDevOps.Domain.States
 
         void IReleaseSprintState.FinishSprint()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The sprint has already been finished!");
         }
 
         void IReleaseSprintState.Release()
         {
-            throw new NotImplementedException();
+            // hier goedkeuring van product owner of scrum master toevoegen!
+
+            // hier ook de pipeline aftrappen en checken of hij het doet anders foutmelding geven
+
+
+            this.sprint.SetState(new ReleaseSprintReleaseCompletedState(this.sprint));
         }
 
         void IReleaseSprintState.StartSprint()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The sprint has already been finished, so can not be started!");
         }
     }
 }

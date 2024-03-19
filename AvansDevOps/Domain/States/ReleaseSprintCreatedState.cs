@@ -13,42 +13,47 @@ namespace AvansDevOps.Domain.States
 
         void IReleaseSprintState.CancelRelease()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The sprint has not started & finished yet, so the release can not be executed or canceled!");
         }
 
         void IReleaseSprintState.CancelSprint()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Sprint canceled!");
+            this.sprint.SetState(new ReleaseSprintCanceledState(this.sprint));
         }
 
         void ISprintState.ChangeEndDate(DateTime endDate)
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"EndDate of the sprint succesfully changed to {endDate.ToString()}");
+            this.sprint.endDate = endDate;
         }
 
         void ISprintState.ChangeName(string name)
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"Sprint name successfully changed to {name}");
+            this.sprint.name = name;
         }
 
         void ISprintState.ChangeStartDate(DateTime startDate)
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"StartDate of the sprint succesfully changed to {startDate.ToString()}");
+            this.sprint.startDate = startDate;
         }
 
         void IReleaseSprintState.FinishSprint()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The sprint has not started yet, so can not be finished!");
         }
 
         void IReleaseSprintState.Release()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The sprint has not started & finished yet, so can not be released!");
         }
 
         void IReleaseSprintState.StartSprint()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Sprint started successfully!");
+            this.sprint.SetState(new ReleaseSprintInProgressState(this.sprint));
         }
     }
 }

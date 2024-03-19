@@ -13,12 +13,12 @@ namespace AvansDevOps.Domain.States
 
         void IReleaseSprintState.CancelRelease()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The sprint has already been canceled, so there won't be any release!");
         }
 
         void IReleaseSprintState.CancelSprint()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The sprint has already been canceled!");
         }
 
         void ISprintState.ChangeEndDate(DateTime endDate)
@@ -38,17 +38,17 @@ namespace AvansDevOps.Domain.States
 
         void IReleaseSprintState.FinishSprint()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The sprint has already been canceled and can not be finished!");
         }
 
         void IReleaseSprintState.Release()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The sprint has already been canceled and can not be released!");
         }
 
         void IReleaseSprintState.StartSprint()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The sprint has already been canceled and can not be started!");
         }
     }
 }
