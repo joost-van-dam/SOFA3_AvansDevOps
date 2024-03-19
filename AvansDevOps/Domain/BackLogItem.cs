@@ -31,6 +31,11 @@ namespace AvansDevOps.Domain
             this.backLogItemActivities.Remove(backLogItemActivity);
         }
 
+        internal void SetState(IBacklogItemState state)
+        {
+            this.backlogItemState = state;
+        }
+
 
     }
 }

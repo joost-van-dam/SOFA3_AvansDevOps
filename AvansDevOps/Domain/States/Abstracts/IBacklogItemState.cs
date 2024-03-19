@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AvansDevOps.Domain.States.Abstracts
+﻿namespace AvansDevOps.Domain.States.Abstracts
 {
     internal interface IBacklogItemState
     {
+        void SetDoingStatus();
+
+        void SetReadyForTestingStatus();
+
+        void SetTestingStatus();
+
+        void SetTestedStatus();
+
+        void SetDoneStatus();
+
+        void SetTodoStatus();
     }
 }

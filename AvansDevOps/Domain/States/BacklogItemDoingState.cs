@@ -10,5 +10,37 @@ namespace AvansDevOps.Domain.States
         {
             this.backLogItem = backLogItem;
         }
+
+        void IBacklogItemState.SetDoingStatus()
+        {
+            Console.WriteLine("Status is already doing");
+        }
+
+        void IBacklogItemState.SetDoneStatus()
+        {
+            Console.WriteLine("Status first has to be ready-for-testing");
+        }
+
+        void IBacklogItemState.SetReadyForTestingStatus()
+        {
+            Console.WriteLine("Status successfully changed to ready-for-testing");
+            this.backLogItem.SetState(new BacklogItemReadyForTestingState(this.backLogItem));
+        }
+
+        void IBacklogItemState.SetTestedStatus()
+        {
+            Console.WriteLine("Status first has to be ready-for-testing");
+        }
+
+        void IBacklogItemState.SetTestingStatus()
+        {
+            Console.WriteLine("Status first has to be ready-for-testing");
+        }
+
+        void IBacklogItemState.SetTodoStatus()
+        {
+            Console.WriteLine("Status successfully changed to to-do");
+            this.backLogItem.SetState(new BacklogItemToDoState(this.backLogItem));
+        }
     }
 }
