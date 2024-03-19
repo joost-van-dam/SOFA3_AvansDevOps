@@ -13,32 +13,32 @@ namespace AvansDevOps.Domain.States
 
         void IBacklogItemState.SetDoingStatus()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The backlog item's status is already set to done and can not be changed anymore!");
         }
 
         void IBacklogItemState.SetDoneStatus()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The backlog item's status is already set to done!");
         }
 
         void IBacklogItemState.SetReadyForTestingStatus()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The backlog item's status is already set to done and can not be changed anymore!");
         }
 
         void IBacklogItemState.SetTestedStatus()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The backlog item's status is already set to done and can not be changed anymore!");
         }
 
         void IBacklogItemState.SetTestingStatus()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The backlog item's status is already set to done and can not be changed anymore!");
         }
 
         void IBacklogItemState.SetTodoStatus()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The backlog item's status is already set to done and can not be changed anymore!");
         }
     }
 }

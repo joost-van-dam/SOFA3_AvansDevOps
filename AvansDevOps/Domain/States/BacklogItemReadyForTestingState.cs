@@ -13,8 +13,9 @@ namespace AvansDevOps.Domain.States
 
         void IBacklogItemState.SetDoingStatus()
         {
-            Console.WriteLine("Status successfully changed to doing");
-            this.backLogItem.SetState(new BacklogItemDoingState(this.backLogItem));
+            Console.WriteLine("Status can not be changed to doing, the tester first has to review the item!");
+            //Console.WriteLine("Status successfully changed to doing");
+            //this.backLogItem.SetState(new BacklogItemDoingState(this.backLogItem));
         }
 
         void IBacklogItemState.SetDoneStatus()
@@ -41,8 +42,9 @@ namespace AvansDevOps.Domain.States
 
         void IBacklogItemState.SetTodoStatus()
         {
-            Console.WriteLine("Status successfully changed to to-do");
-            this.backLogItem.SetState(new BacklogItemToDoState(this.backLogItem));
+            Console.WriteLine("Status can not be changed to to-do, the tester first has to review the item!");
+            //Console.WriteLine("Status successfully changed to to-do");
+            //this.backLogItem.SetState(new BacklogItemToDoState(this.backLogItem));
         }
     }
 }

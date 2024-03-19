@@ -13,32 +13,36 @@ namespace AvansDevOps.Domain.States
 
         void IBacklogItemState.SetDoingStatus()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The status can only be set to tested or to-do if the item has issuess");
         }
 
         void IBacklogItemState.SetDoneStatus()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Backlog item first has to be tested");
         }
 
         void IBacklogItemState.SetReadyForTestingStatus()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Status successfully changed to ready-for-testing");
+            this.backLogItem.SetState(new BacklogItemReadyForTestingState(this.backLogItem));
         }
 
         void IBacklogItemState.SetTestedStatus()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Status successfully changed to tested");
+            this.backLogItem.SetState(new BacklogItemTestedState(this.backLogItem));
         }
 
         void IBacklogItemState.SetTestingStatus()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Status is already testing");
         }
 
         void IBacklogItemState.SetTodoStatus()
         {
-            throw new NotImplementedException();
+            //berichtje naar scrummaster en product owner dat item afgekeurd is
+            Console.WriteLine("Status successfully changed to to-do");
+            this.backLogItem.SetState(new BacklogItemToDoState(this.backLogItem));
         }
     }
 }
