@@ -36,14 +36,10 @@ namespace AvansDevOps.Domain.States
             Console.WriteLine("The StartDate can only be changed when the sprint has not started!");
         }
 
-
-
         void IPartialProductSprintState.FinishSprint()
         {
             Console.WriteLine("The sprint has already been canceled and can not be finished!");
         }
-
-
 
         void IPartialProductSprintState.StartSprint()
         {

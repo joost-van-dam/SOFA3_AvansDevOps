@@ -10,5 +10,21 @@ namespace AvansDevOps.Domain.States
         {
             this.backLogItemActivity = backLogItemActivity;
         }
+
+        void IBacklogItemActivityState.SetDoingStatus()
+        {
+            Console.WriteLine("Activity status changed to doing!");
+            this.backLogItemActivity.SetState(new BacklogItemActivityDoingState(this.backLogItemActivity));
+        }
+
+        void IBacklogItemActivityState.SetDoneStatus()
+        {
+            Console.WriteLine("Set the status to doing first, before the status can be set to done!");
+        }
+
+        void IBacklogItemActivityState.SetTodoStatus()
+        {
+            Console.WriteLine("Status is already to-do!");
+        }
     }
 }
