@@ -2,28 +2,14 @@
 
 namespace AvansDevOps.Domain.CompositeAndVisitor
 {
-    internal class CompositeComponent : Component
+    //waarom deze niet abstract, want het lijkt me dat niet geen compositecomponent object wilt maken
+    internal abstract class CompositeComponent : Component
     {
-        private List<Component> parts;
-
-        public CompositeComponent()
-        {
-            parts = new List<Component>();
-        }
+        private readonly List<Component> parts = new List<Component>();
 
         public void AddComponent(Component comp)
         {
             parts.Add(comp);
-        }
-
-        public Component GetComponent(int i)
-        {
-            return parts[i];
-        }
-
-        public int GetSize()
-        {
-            return parts.Count;
         }
 
         internal override void AcceptVisitor(Visitor visitor)
