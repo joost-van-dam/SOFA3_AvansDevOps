@@ -24,18 +24,20 @@ namespace AvansDevOps.Domain.States
 
         void ISprintState.ChangeEndDate(DateTime endDate)
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"EndDate of the sprint succesfully changed to {endDate.ToString()}");
+            this.sprint.endDate = endDate;
         }
 
         void ISprintState.ChangeName(string name)
         {
-            throw new NotImplementedException();
-            //this.sprint.name = name;
+            Console.WriteLine($"Sprint name successfully changed to {name}");
+            this.sprint.name = name;
         }
 
         void ISprintState.ChangeStartDate(DateTime startDate)
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"StartDate of the sprint succesfully changed to {startDate.ToString()}");
+            this.sprint.startDate = startDate;
         }
 
         void IPartialProductSprintState.FinishSprint()

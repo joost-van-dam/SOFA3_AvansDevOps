@@ -23,17 +23,17 @@ namespace AvansDevOps.Domain.States
 
         void ISprintState.ChangeEndDate(DateTime endDate)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The EndDate can only be changed when the sprint has not started!");
         }
 
         void ISprintState.ChangeName(string name)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The sprint name can only be changed when the sprint has not started!");
         }
 
         void ISprintState.ChangeStartDate(DateTime startDate)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The StartDate can only be changed when the sprint has not started!");
         }
 
         void IPartialProductSprintState.FinishSprint()
