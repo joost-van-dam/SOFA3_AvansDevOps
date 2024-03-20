@@ -2,19 +2,22 @@
 {
     internal class DryRunVisitor : Visitor
     {
-        internal override void VisitPipeline(Pipeline pipeline)
+        void Visitor.VisitPipeline(Pipeline pipeline)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("===================================");
+            Console.WriteLine($"Dry run of: {pipeline.GetName()}");
+            Console.WriteLine("===================================");
         }
 
-        internal override void VisitStage(Stage stage)
+        void Visitor.VisitStage(Stage stage)
         {
-            throw new NotImplementedException();
+            Console.WriteLine();
+            Console.WriteLine($"Stage: {stage.GetName()}");
         }
 
-        internal override void VisitCommand(Command command)
+        void Visitor.VisitCommand(Command command)
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"Command: {command.GetCommand()}");
         }
     }
 }

@@ -41,7 +41,7 @@ stage7.AddComponent(new Command("execute script 456"));
 
 ExecutionVisitor executionVisitor = new ExecutionVisitor();
 pipeline.AcceptVisitor(executionVisitor);
-
+//pipeline.AcceptVisitor(new DryRunVisitor());
 
 
 

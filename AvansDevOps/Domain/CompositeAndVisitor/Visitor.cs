@@ -1,12 +1,12 @@
 ﻿namespace AvansDevOps.Domain.CompositeAndVisitor
 {
-    internal abstract class Visitor
+    internal interface Visitor
     {
-        internal abstract void VisitPipeline(Pipeline pipeline);
+        void VisitPipeline(Pipeline pipeline);
 
-        internal abstract void VisitStage(Stage stage);
+        void VisitStage(Stage stage);
 
-        internal abstract void VisitCommand(Command command);
+        void VisitCommand(Command command);
 
     }
 }

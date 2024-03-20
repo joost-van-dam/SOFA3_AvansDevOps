@@ -2,22 +2,22 @@
 {
     internal class ExecutionVisitor : Visitor
     {
-        internal override void VisitPipeline(Pipeline pipeline)
+        void Visitor.VisitPipeline(Pipeline pipeline)
         {
             Console.WriteLine("===================================");
-            Console.WriteLine($"Pipeline name: {pipeline.GetName()}");
+            Console.WriteLine($"Execution of: {pipeline.GetName()}");
             Console.WriteLine("===================================");
         }
 
-        internal override void VisitStage(Stage stage)
+        void Visitor.VisitStage(Stage stage)
         {
             Console.WriteLine();
             Console.WriteLine($"Stage: {stage.GetName()}");
         }
 
-        internal override void VisitCommand(Command command)
+        void Visitor.VisitCommand(Command command)
         {
-            Console.WriteLine($"Command: {command.GetCommand()}");
+            Console.WriteLine($"Executed Command: {command.GetCommand()}");
         }
     }
 }
