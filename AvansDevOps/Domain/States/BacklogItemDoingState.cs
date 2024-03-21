@@ -24,6 +24,9 @@ namespace AvansDevOps.Domain.States
         void IBacklogItemState.SetReadyForTestingStatus()
         {
             Console.WriteLine("Status successfully changed to ready-for-testing");
+            //verzend de testers een notificatie
+            this.backLogItem.Notify();
+
             this.backLogItem.SetState(new BacklogItemReadyForTestingState(this.backLogItem));
         }
 

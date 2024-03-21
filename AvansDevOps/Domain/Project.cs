@@ -19,12 +19,22 @@ namespace AvansDevOps.Domain
             this.productOwner = productOwner;
         }
 
+        public ProductOwner GetProductOwner()
+        {
+            return productOwner;
+        }
+
+        internal ScrumMaster GetScrumMaster()
+        {
+            return this.sprints.Last!.Value.GetScrumMaster();
+        }
+
         public void Add(Sprint sprint)
         {
             sprints.AddLast(sprint);
         }
 
-        public LinkedList<Developer> GetDeveloperList()
+        public LinkedList<Developer> GetDevelopers()
         {
             var developers = new LinkedList<Developer>();
             foreach (Sprint sprint in sprints)
@@ -36,7 +46,23 @@ namespace AvansDevOps.Domain
             }
             developers.Distinct();
             return developers;
-
         }
+
+        // straks nog en wat doen aan deze semi code duplicatie
+        public LinkedList<Tester> GetTesters()
+        {
+            var testers = new LinkedList<Tester>();
+            foreach (Sprint sprint in sprints)
+            {
+                foreach (Tester tester in sprint.GetTesters())
+                {
+                    testers.AddLast(tester);
+                }
+            }
+            testers.Distinct();
+            return testers;
+        }
+
+
     }
 }
