@@ -13,7 +13,7 @@ namespace AvansDevOps.Domain
         private LinkedList<BackLogItemActivity> backLogItemActivities = new LinkedList<BackLogItemActivity>();
         private IBacklogItemState backlogItemState { get; set; }
 
-        private LinkedList<IObserver> observers = new LinkedList<IObserver>();
+        private LinkedList<IBacklogItemStateObserver> observers = new LinkedList<IBacklogItemStateObserver>();
 
         public BackLogItem(string name, string description, Developer developer, LinkedList<BackLogItemActivity> backLogItemActivities)
         {
@@ -36,8 +36,14 @@ namespace AvansDevOps.Domain
 
         internal void SetState(IBacklogItemState state)
         {
-            //this.notifyObservers(BacklogStateChanged);
+            var oldState = this.backlogItemState;
             this.backlogItemState = state;
+            Notify(this, oldState);
+        }
+
+        internal IBacklogItemState GetState()
+        {
+            return this.backlogItemState;
         }
 
         internal string GetName()
@@ -51,29 +57,21 @@ namespace AvansDevOps.Domain
         }
 
         // niet implicit op de interface zodat je vanuit de state ook deze functie kan aanroepen
-        public void Attach(IObserver observer)
+        public void Attach(IBacklogItemStateObserver observer)
         {
             this.observers.AddLast(observer);
         }
 
-        public void Detach(IObserver observer)
+        public void Detach(IBacklogItemStateObserver observer)
         {
             this.observers.Remove(observer);
         }
 
-        //public void Notify()
-        //{
-        //    foreach (IObserver observer in this.observers)
-        //    {
-        //        observer.Update();
-        //    }
-        //}
-
-        public void Notify(Notification notification)
+        public void Notify(BackLogItem backlogItem, IBacklogItemState oldState)
         {
-            foreach (IObserver observer in this.observers)
+            foreach (IBacklogItemStateObserver observer in this.observers)
             {
-                observer.Update(notification);
+                observer.Update(backlogItem, oldState);
             }
         }
     }
