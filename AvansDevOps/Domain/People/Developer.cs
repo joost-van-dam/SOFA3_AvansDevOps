@@ -4,7 +4,7 @@
     {
         private bool isLeadDeveloper;
 
-        public Developer(string firstName, string lastName, bool isLeadDeveloper) : base(firstName, lastName)
+        public Developer(string firstName, string lastName, string email, bool isLeadDeveloper) : base(firstName, lastName, email)
         {
             this.isLeadDeveloper = isLeadDeveloper;
         }
