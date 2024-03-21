@@ -13,7 +13,7 @@ namespace AvansDevOps.Domain
         private LinkedList<BackLogItem> backlog;
 
 
-        protected Sprint(string name, DateTime startDate, DateTime endDate, ScrumMaster scrumMaster, LinkedList<Developer> developers, LinkedList<Tester> testers, Backlog backlog)
+        protected Sprint(string name, DateTime startDate, DateTime endDate, ScrumMaster scrumMaster, LinkedList<Developer> developers, LinkedList<Tester> testers, LinkedList<BackLogItem> backlog)
         {
             this.name = name;
             this.startDate = startDate;

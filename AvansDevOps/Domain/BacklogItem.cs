@@ -56,7 +56,7 @@ namespace AvansDevOps.Domain
             return $"{this.developer.GetFirstName()} {this.developer.GetLastName}";
         }
 
-        // niet implicit op de interface zodat je vanuit de state ook deze functie kan aanroepen
+        // een observer is GEEN persoon maar bijv. een NotificationService, de notification service zoekt dan ook wat er moet gebeuren met de notificatie
         public void Attach(IBacklogItemStateObserver observer)
         {
             this.observers.AddLast(observer);

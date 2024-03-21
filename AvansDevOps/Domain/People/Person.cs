@@ -6,11 +6,14 @@
         private string lastName { get; }
         private string email { get; }
 
-        protected Person(string firstName, string lastName, string email)
+        private List<NotificationPlatformPreferences> preferences { get; }
+
+        protected Person(string firstName, string lastName, string email, List<NotificationPlatformPreferences> preferences)
         {
             this.firstName = firstName;
             this.lastName = lastName;
             this.email = email;
+            this.preferences = preferences;
         }
 
         public string GetFirstName()

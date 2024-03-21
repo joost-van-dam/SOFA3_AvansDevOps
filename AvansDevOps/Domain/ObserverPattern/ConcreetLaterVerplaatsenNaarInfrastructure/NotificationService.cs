@@ -17,12 +17,13 @@ namespace AvansDevOps.Domain.ObserverPattern.ConcreetLaterVerplaatsenNaarInfrast
             this.notifiers = notifiers;
         }
 
+        // de melding van de state change komt hier binnen
         void IBacklogItemStateObserver.Update(BackLogItem backlogItem, IBacklogItemState oldState)
         {
 
             if (backlogItem.GetState() is BacklogItemToDoState && oldState is BacklogItemTestingState)
             {
-                //notificatie naar scrummaster en productowner
+                //notificatie naar scrummaster en productowner omdat backlogitem is afgekeurd is door tester
             }
 
             var backlogItemState = backlogItem.GetState();
