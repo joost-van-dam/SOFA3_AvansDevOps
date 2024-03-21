@@ -8,7 +8,7 @@ namespace AvansDevOps.Domain
     {
         private string name { get; set; }
         private string description { get; set; }
-        private Developer developer { get; set; } // moet dit?
+        private Developer developer { get; set; }
         private IBacklogItemActivityState backlogItemActivityState { get; set; }
 
         public BackLogItemActivity(string name, string description, Developer developer)
