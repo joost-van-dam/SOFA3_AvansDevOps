@@ -51,14 +51,20 @@ namespace AvansDevOps.Domain
             this.observers.Remove(observer);
         }
 
-        public void Notify()
+        //public void Notify()
+        //{
+        //    foreach (IObserver observer in this.observers)
+        //    {
+        //        observer.Update();
+        //    }
+        //}
+
+        public void Notify(Notification notification)
         {
             foreach (IObserver observer in this.observers)
             {
-                observer.Update();
+                observer.Update(notification);
             }
         }
-
-
     }
 }
