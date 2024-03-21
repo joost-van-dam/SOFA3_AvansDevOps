@@ -42,7 +42,7 @@ namespace AvansDevOps.Domain.States
         {
             //berichtje naar scrummaster en product owner dat item afgekeurd is
             Console.WriteLine("Status successfully changed to to-do");
-            this.backLogItem.Notify(new Notification(TypeOfReceiver.ScrumMasterAndProductOwner, $"{backLogItem.GetName} van {backLogItem.GetDeveloperFullName} is afgekeurd door de tester en terug naar to-do verplaatst."));
+            //this.backLogItem.Notify(new Notification(TypeOfReceiver.ScrumMasterAndProductOwner, $"{backLogItem.GetName} van {backLogItem.GetDeveloperFullName} is afgekeurd door de tester en terug naar to-do verplaatst."));
             this.backLogItem.SetState(new BacklogItemToDoState(this.backLogItem));
         }
     }
