@@ -29,6 +29,23 @@ namespace AvansDevOps.Domain
             this.sprintState.CompleteSprint();
         }
 
+        public void ChangeName(string name)
+        {
+            this.sprintState.ChangeName(name);
+        }
+
+        public void ChangeStartDate(DateTime startDate)
+        {
+            this.sprintState.ChangeStartDate(startDate);
+        }
+
+        public void ChangeEndDate(DateTime endDate)
+        {
+            this.sprintState.ChangeEndDate(endDate);
+        }
+
+
+
         internal void SetState(IPartialProductSprintState sprintState)
         {
             this.sprintState = sprintState;

@@ -34,6 +34,21 @@ namespace AvansDevOps.Domain
         {
             this.sprintState.CancelRelease();
         }
+        public void ChangeName(string name)
+        {
+            this.sprintState.ChangeName(name);
+        }
+
+        public void ChangeStartDate(DateTime startDate)
+        {
+            this.sprintState.ChangeStartDate(startDate);
+        }
+
+        public void ChangeEndDate(DateTime endDate)
+        {
+            this.sprintState.ChangeEndDate(endDate);
+        }
+
 
         internal void SetState(IReleaseSprintState sprintState)
         {
