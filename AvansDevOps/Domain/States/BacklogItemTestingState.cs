@@ -41,6 +41,8 @@ namespace AvansDevOps.Domain.States
         void IBacklogItemState.SetTodoStatus()
         {
             //berichtje naar scrummaster en product owner dat item afgekeurd is
+            this.backLogItem.Notify();
+
             Console.WriteLine("Status successfully changed to to-do");
             this.backLogItem.SetState(new BacklogItemToDoState(this.backLogItem));
         }

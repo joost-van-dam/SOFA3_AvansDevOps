@@ -22,6 +22,9 @@ namespace AvansDevOps.Domain
             this.backlog = backlog;
         }
 
-
+        internal LinkedList<Developer> GetDevelopers()
+        {
+            return this.developers;
+        }
     }
 }

@@ -23,5 +23,20 @@ namespace AvansDevOps.Domain
         {
             sprints.AddLast(sprint);
         }
+
+        public LinkedList<Developer> GetDeveloperList()
+        {
+            var developers = new LinkedList<Developer>();
+            foreach (Sprint sprint in sprints)
+            {
+                foreach (Developer developer in sprint.GetDevelopers())
+                {
+                    developers.AddLast(developer);
+                }
+            }
+            developers.Distinct();
+            return developers;
+
+        }
     }
 }

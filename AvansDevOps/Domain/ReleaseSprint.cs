@@ -39,5 +39,6 @@ namespace AvansDevOps.Domain
         {
             this.sprintState = sprintState;
         }
+
     }
 }
