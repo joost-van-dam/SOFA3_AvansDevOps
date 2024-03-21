@@ -12,9 +12,9 @@ namespace AvansDevOps.Infrastructure.Adapters
             this.slackLibrary = new SlackLibrary();
         }
 
-        public void SendMessage(Developer developer, string message)
+        public void SendMessage(Person person, string message)
         {
-            this.slackLibrary.SendMessage($"@{developer.GetFirstName}{developer.GetLastName}", message);
+            this.slackLibrary.SendMessage($"@{person.GetFirstName}{person.GetLastName}", message);
         }
     }
 }

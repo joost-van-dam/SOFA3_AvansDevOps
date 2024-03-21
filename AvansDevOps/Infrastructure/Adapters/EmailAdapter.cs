@@ -12,9 +12,9 @@ namespace AvansDevOps.Infrastructure.Adapters
             this.emailLibrary = new EmailLibrary();
         }
 
-        public void SendEmail(Developer developer, string subject, string body)
+        public void SendEmail(Person person, string subject, string body)
         {
-            this.emailLibrary.SendEmail($"@{developer.GetFirstName}", subject, body);
+            this.emailLibrary.SendEmail($"@{person.GetEmail}", subject, body);
         }
     }
 }
