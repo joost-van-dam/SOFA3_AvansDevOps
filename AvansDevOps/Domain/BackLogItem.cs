@@ -40,6 +40,16 @@ namespace AvansDevOps.Domain
             this.backlogItemState = state;
         }
 
+        internal string GetName()
+        {
+            return this.name;
+        }
+
+        internal string GetDeveloperFullName()
+        {
+            return $"{this.developer.GetFirstName()} {this.developer.GetLastName}";
+        }
+
         // niet implicit op de interface zodat je vanuit de state ook deze functie kan aanroepen
         public void Attach(IObserver observer)
         {

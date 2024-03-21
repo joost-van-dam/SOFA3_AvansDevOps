@@ -25,7 +25,7 @@ namespace AvansDevOps.Domain.States
         {
             Console.WriteLine("Status successfully changed to ready-for-testing");
             //verzend de testers een notificatie
-            this.backLogItem.Notify();
+            this.backLogItem.Notify(new Notification(TypeOfReceiver.Tester, $"{this.backLogItem.GetName} is ready-for-testing"));
 
             this.backLogItem.SetState(new BacklogItemReadyForTestingState(this.backLogItem));
         }
