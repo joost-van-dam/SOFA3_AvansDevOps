@@ -2,7 +2,7 @@
 {
     internal class ProductOwner : Person
     {
-        public ProductOwner(string firstName, string lastName) : base(firstName, lastName)
+        public ProductOwner(string firstName, string lastName, string email) : base(firstName, lastName, email)
         {
         }
     }

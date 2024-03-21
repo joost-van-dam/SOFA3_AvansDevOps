@@ -2,7 +2,7 @@
 {
     internal class ScrumMaster : Person
     {
-        public ScrumMaster(string firstName, string lastName) : base(firstName, lastName)
+        public ScrumMaster(string firstName, string lastName, string email) : base(firstName, lastName, email)
         {
         }
     }

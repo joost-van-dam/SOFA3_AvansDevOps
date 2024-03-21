@@ -3,7 +3,7 @@ using AvansDevOps.Infrastructure.Libraries;
 
 namespace AvansDevOps.Infrastructure.Adapters
 {
-    internal class EmailAdapter
+    internal class EmailAdapter : INotifier
     {
         private EmailLibrary emailLibrary;
 
@@ -12,9 +12,11 @@ namespace AvansDevOps.Infrastructure.Adapters
             this.emailLibrary = new EmailLibrary();
         }
 
-        public void SendEmail(Person person, string subject, string body)
+        //misschien van die message ook een object maken waar je de subject en body in kan zetten voor bijv. een email en voor slack alleen de body gebruiken als bericht
+        void INotifier.SendNotification(Person person, string message)
         {
-            this.emailLibrary.SendEmail($"@{person.GetEmail}", subject, body);
+            //this.emailLibrary.SendEmail($"@{person.GetEmail}", subject, body);
+            this.emailLibrary.SendEmail($"@{person.GetEmail}", "subject", message);
         }
     }
 }

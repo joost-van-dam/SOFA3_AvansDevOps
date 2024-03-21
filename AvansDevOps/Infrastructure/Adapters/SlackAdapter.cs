@@ -3,7 +3,7 @@ using AvansDevOps.Infrastructure.Libraries;
 
 namespace AvansDevOps.Infrastructure.Adapters
 {
-    internal class SlackAdapter
+    internal class SlackAdapter : INotifier
     {
         private SlackLibrary slackLibrary;
 
@@ -12,7 +12,7 @@ namespace AvansDevOps.Infrastructure.Adapters
             this.slackLibrary = new SlackLibrary();
         }
 
-        public void SendMessage(Person person, string message)
+        void INotifier.SendNotification(Person person, string message)
         {
             this.slackLibrary.SendMessage($"@{person.GetFirstName}{person.GetLastName}", message);
         }

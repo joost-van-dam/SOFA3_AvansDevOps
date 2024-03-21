@@ -4,6 +4,6 @@ namespace AvansDevOps.Infrastructure.Adapters
 {
     internal interface INotifier
     {
-        void Notify(Person person, string message);
+        void SendNotification(Person person, string message);
     }
 }
