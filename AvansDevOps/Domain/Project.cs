@@ -7,6 +7,7 @@ namespace AvansDevOps.Domain
         private ProductOwner productOwner;
         private LinkedList<BacklogItem> projectBacklog = new LinkedList<BacklogItem>();
         private LinkedList<Sprint> sprints = new LinkedList<Sprint>();
+        private readonly SprintFactory sprintFactory = new SprintFactory();
 
         public Project(ProductOwner productOwner, LinkedList<BacklogItem> projectBacklog)
         {
@@ -29,9 +30,9 @@ namespace AvansDevOps.Domain
             return this.sprints.Last!.Value.GetScrumMaster();
         }
 
-        public void Add(Sprint sprint)
+        public void CreateSprint(TypeOfSprint typeOfSprint, string name, DateTime startDate, DateTime endDate, ScrumMaster scrumMaster, LinkedList<Developer> developers, LinkedList<Tester> testers, LinkedList<BacklogItem> backlog)
         {
-            sprints.AddLast(sprint);
+            this.sprints.AddLast(this.sprintFactory.CreateSprint(this, typeOfSprint, name, startDate, endDate, scrumMaster, developers, testers, backlog));
         }
 
         public LinkedList<Developer> GetDevelopers()

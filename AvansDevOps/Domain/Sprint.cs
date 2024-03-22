@@ -6,6 +6,7 @@ namespace AvansDevOps.Domain
 {
     internal abstract class Sprint : IObservableSprint
     {
+        internal Project project;
         internal string name; //willen we een sprint een naam geven?
         internal DateTime startDate;
         internal DateTime endDate;
@@ -16,8 +17,9 @@ namespace AvansDevOps.Domain
         private LinkedList<ISprintObserver> observers = new LinkedList<ISprintObserver>();
 
 
-        protected Sprint(string name, DateTime startDate, DateTime endDate, ScrumMaster scrumMaster, LinkedList<Developer> developers, LinkedList<Tester> testers, LinkedList<BacklogItem> backlog)
+        protected Sprint(Project project, string name, DateTime startDate, DateTime endDate, ScrumMaster scrumMaster, LinkedList<Developer> developers, LinkedList<Tester> testers, LinkedList<BacklogItem> backlog)
         {
+            this.project = project;
             this.name = name;
             this.startDate = startDate;
             this.endDate = endDate;
