@@ -1,7 +1,8 @@
 ﻿using AvansDevOps.Domain.ObserverPattern.BacklogObserver;
 using AvansDevOps.Domain.People;
-using AvansDevOps.Domain.States;
 using AvansDevOps.Domain.States.Abstracts;
+using AvansDevOps.Domain.States.BacklogItemActivityStates;
+using AvansDevOps.Domain.States.BacklogItemStates;
 
 namespace AvansDevOps.Domain
 {
@@ -61,6 +62,19 @@ namespace AvansDevOps.Domain
         internal string GetName()
         {
             return this.name;
+        }
+
+        internal bool CheckIfAllActivitiesAreDone()
+        {
+            foreach (BacklogItemActivity backlogItemActivity in this.backlogItemActivities)
+            {
+                if (backlogItemActivity.GetState() is not BacklogItemActivityDoneState)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         // een observer is GEEN persoon maar bijv. een NotificationService, de notification service zoekt dan ook wat er moet gebeuren met de notificatie

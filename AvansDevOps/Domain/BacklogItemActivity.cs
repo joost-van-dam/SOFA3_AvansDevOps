@@ -1,6 +1,6 @@
 ﻿using AvansDevOps.Domain.People;
-using AvansDevOps.Domain.States;
 using AvansDevOps.Domain.States.Abstracts;
+using AvansDevOps.Domain.States.BacklogItemActivityStates;
 
 namespace AvansDevOps.Domain
 {
@@ -38,6 +38,11 @@ namespace AvansDevOps.Domain
         internal void SetState(IBacklogItemActivityState state)
         {
             this.backlogItemActivityState = state;
+        }
+
+        internal IBacklogItemActivityState GetState()
+        {
+            return this.backlogItemActivityState;
         }
     }
 }
