@@ -4,14 +4,14 @@ using AvansDevOps.Domain.States.Abstracts;
 
 namespace AvansDevOps.Domain
 {
-    internal class BackLogItemActivity
+    internal class BacklogItemActivity
     {
         private string name { get; set; }
         private string description { get; set; }
         private Developer developer { get; set; }
         private IBacklogItemActivityState backlogItemActivityState { get; set; }
 
-        public BackLogItemActivity(string name, string description, Developer developer)
+        public BacklogItemActivity(string name, string description, Developer developer)
         {
             this.name = name;
             this.description = description;
