@@ -50,9 +50,6 @@ namespace AvansDevOps.Domain.States.BacklogItemStates
         {
             //berichtje naar scrummaster en product owner dat item afgekeurd is
             Console.WriteLine("Status successfully changed to to-do");
-            //this.backlogItem.Notify(new Notification(TypeOfReceiver.ScrumMasterAndProductOwner, $"{backlogItem.GetName} van {backlogItem.GetDeveloperFullName} is afgekeurd door de tester en terug naar to-do verplaatst."));
-
-
             backlogItem.SetState(new BacklogItemTestingRejectedState(backlogItem));
         }
 

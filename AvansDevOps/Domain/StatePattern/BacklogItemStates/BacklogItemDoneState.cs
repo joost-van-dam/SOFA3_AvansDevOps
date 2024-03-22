@@ -43,7 +43,7 @@ namespace AvansDevOps.Domain.States.BacklogItemStates
 
         void IBacklogItemState.SetTodoStatus()
         {
-            Console.WriteLine("The backlog item's status is already set to done and can not be changed anymore!");
+            backlogItem.SetState(new BacklogItemTestingRejectedState(backlogItem));
         }
     }
 }
