@@ -30,7 +30,7 @@ namespace AvansDevOps.Domain
             return this.sprints.Last!.Value.GetScrumMaster();
         }
 
-        public void CreateSprint(TypeOfSprint typeOfSprint, string name, DateTime startDate, DateTime endDate, ScrumMaster scrumMaster, LinkedList<Developer> developers, LinkedList<Tester> testers, LinkedList<BacklogItem> backlog)
+        public void CreateSprint(TypeOfSprints typeOfSprint, string name, DateTime startDate, DateTime endDate, ScrumMaster scrumMaster, LinkedList<Developer> developers, LinkedList<Tester> testers, LinkedList<BacklogItem> backlog)
         {
             this.sprints.AddLast(this.sprintFactory.CreateSprint(this, typeOfSprint, name, startDate, endDate, scrumMaster, developers, testers, backlog));
         }

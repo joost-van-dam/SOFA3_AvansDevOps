@@ -1,6 +1,6 @@
 ﻿namespace AvansDevOps.Domain
 {
-    enum TypeOfSprint
+    enum TypeOfSprints
     {
         PARTIALPRODUCTSPRINT,
         RELEASESPRINT,
