@@ -1,4 +1,4 @@
-﻿using AvansDevOps.Domain.ObserverPattern;
+﻿using AvansDevOps.Domain.ObserverPattern.BacklogObserver;
 using AvansDevOps.Domain.People;
 using AvansDevOps.Domain.States;
 using AvansDevOps.Domain.States.Abstracts;
@@ -9,7 +9,7 @@ namespace AvansDevOps.Domain
     {
         private string name { get; set; }
         private string description { get; set; }
-        private Developer developer { get; set; } // aan Arno vragen hoe het zit met de assignment van een backlogitemactivity aan een andere developer
+        private Developer developer { get; set; }
         private LinkedList<BacklogItemActivity> backlogItemActivities = new LinkedList<BacklogItemActivity>();
         private IBacklogItemState backlogItemState { get; set; }
 
@@ -64,12 +64,12 @@ namespace AvansDevOps.Domain
         }
 
         // een observer is GEEN persoon maar bijv. een NotificationService, de notification service zoekt dan ook wat er moet gebeuren met de notificatie
-        public void Attach(IBacklogItemObserver observer)
+        public void Subscribe(IBacklogItemObserver observer)
         {
             this.observers.AddLast(observer);
         }
 
-        public void Detach(IBacklogItemObserver observer)
+        public void Unsubscribe(IBacklogItemObserver observer)
         {
             this.observers.Remove(observer);
         }
