@@ -7,7 +7,7 @@ namespace AvansDevOps.Domain
     internal class ReleaseSprint : Sprint
     {
         private IReleaseSprintState sprintState;
-        public ReleaseSprint(string name, DateTime startDate, DateTime endDate, ScrumMaster scrumMaster, LinkedList<Developer> developers, LinkedList<Tester> testers, Backlog backlog) : base(name, startDate, endDate, scrumMaster, developers, testers, backlog/*, sprintState*/)
+        public ReleaseSprint(string name, DateTime startDate, DateTime endDate, ScrumMaster scrumMaster, LinkedList<Developer> developers, LinkedList<Tester> testers, LinkedList<BacklogItem> backlog) : base(name, startDate, endDate, scrumMaster, developers, testers, backlog/*, sprintState*/)
         {
             this.sprintState = new ReleaseSprintCreatedState(this);
         }

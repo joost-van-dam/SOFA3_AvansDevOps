@@ -4,11 +4,16 @@ namespace AvansDevOps.Domain.States
 {
     internal class BacklogItemDoneState : IBacklogItemState
     {
-        private readonly BackLogItem backLogItem;
+        private readonly BacklogItem backlogItem;
 
-        public BacklogItemDoneState(BackLogItem backLogItem)
+        public BacklogItemDoneState(BacklogItem backlogItem)
         {
-            this.backLogItem = backLogItem;
+            this.backlogItem = backlogItem;
+        }
+
+        bool IBacklogItemState.CreatesNotification()
+        {
+            return false;
         }
 
         void IBacklogItemState.SetDoingStatus()

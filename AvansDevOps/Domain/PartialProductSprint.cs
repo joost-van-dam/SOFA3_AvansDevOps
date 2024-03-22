@@ -7,7 +7,7 @@ namespace AvansDevOps.Domain
     internal class PartialProductSprint : Sprint
     {
         private IPartialProductSprintState sprintState;
-        public PartialProductSprint(string name, DateTime startDate, DateTime endDate, ScrumMaster scrumMaster, LinkedList<Developer> developers, LinkedList<Tester> testers, Backlog backlog) : base(name, startDate, endDate, scrumMaster, developers, testers, backlog/*, new PartialProductSprintCreatedState()*/)
+        public PartialProductSprint(string name, DateTime startDate, DateTime endDate, ScrumMaster scrumMaster, LinkedList<Developer> developers, LinkedList<Tester> testers, LinkedList<BacklogItem> backlog) : base(name, startDate, endDate, scrumMaster, developers, testers, backlog)
         {
             this.sprintState = new PartialProductSprintCreatedState(this);
         }

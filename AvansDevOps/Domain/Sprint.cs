@@ -10,10 +10,10 @@ namespace AvansDevOps.Domain
         private ScrumMaster scrumMaster;
         private LinkedList<Developer> developers;
         private LinkedList<Tester> testers;
-        private LinkedList<BackLogItem> backlog;
+        private LinkedList<BacklogItem> backlog;
 
 
-        protected Sprint(string name, DateTime startDate, DateTime endDate, ScrumMaster scrumMaster, LinkedList<Developer> developers, LinkedList<Tester> testers, LinkedList<BackLogItem> backlog)
+        protected Sprint(string name, DateTime startDate, DateTime endDate, ScrumMaster scrumMaster, LinkedList<Developer> developers, LinkedList<Tester> testers, LinkedList<BacklogItem> backlog)
         {
             this.name = name;
             this.startDate = startDate;

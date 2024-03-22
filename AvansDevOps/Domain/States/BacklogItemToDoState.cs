@@ -4,17 +4,22 @@ namespace AvansDevOps.Domain.States
 {
     internal class BacklogItemToDoState : IBacklogItemState
     {
-        private readonly BackLogItem backLogItem;
+        private readonly BacklogItem backlogItem;
 
-        public BacklogItemToDoState(BackLogItem backLogItem)
+        public BacklogItemToDoState(BacklogItem backlogItem)
         {
-            this.backLogItem = backLogItem;
+            this.backlogItem = backlogItem;
+        }
+
+        bool IBacklogItemState.CreatesNotification()
+        {
+            return false;
         }
 
         void IBacklogItemState.SetDoingStatus()
         {
             Console.WriteLine("Status successfully changed to doing");
-            this.backLogItem.SetState(new BacklogItemDoingState(this.backLogItem));
+            this.backlogItem.SetState(new BacklogItemDoingState(this.backlogItem));
         }
 
         void IBacklogItemState.SetDoneStatus()

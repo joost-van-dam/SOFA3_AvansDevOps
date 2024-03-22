@@ -4,11 +4,19 @@ namespace AvansDevOps.Domain.States
 {
     internal class BacklogItemTestingState : IBacklogItemState
     {
-        private readonly BackLogItem backLogItem;
+        private readonly BacklogItem backlogItem;
 
-        public BacklogItemTestingState(BackLogItem backLogItem)
+        public BacklogItemTestingState(BacklogItem backlogItem)
         {
-            this.backLogItem = backLogItem;
+            this.backlogItem = backlogItem;
+        }
+
+        // leg het in de state vast
+        //methode bij maken 
+        //in interface
+        bool IBacklogItemState.CreatesNotification()
+        {
+            return false;
         }
 
         void IBacklogItemState.SetDoingStatus()
@@ -24,13 +32,13 @@ namespace AvansDevOps.Domain.States
         void IBacklogItemState.SetReadyForTestingStatus()
         {
             Console.WriteLine("Status successfully changed to ready-for-testing");
-            this.backLogItem.SetState(new BacklogItemReadyForTestingState(this.backLogItem));
+            this.backlogItem.SetState(new BacklogItemReadyForTestingState(this.backlogItem));
         }
 
         void IBacklogItemState.SetTestedStatus()
         {
             Console.WriteLine("Status successfully changed to tested");
-            this.backLogItem.SetState(new BacklogItemTestedState(this.backLogItem));
+            this.backlogItem.SetState(new BacklogItemTestedState(this.backlogItem));
         }
 
         void IBacklogItemState.SetTestingStatus()
@@ -42,8 +50,11 @@ namespace AvansDevOps.Domain.States
         {
             //berichtje naar scrummaster en product owner dat item afgekeurd is
             Console.WriteLine("Status successfully changed to to-do");
-            //this.backLogItem.Notify(new Notification(TypeOfReceiver.ScrumMasterAndProductOwner, $"{backLogItem.GetName} van {backLogItem.GetDeveloperFullName} is afgekeurd door de tester en terug naar to-do verplaatst."));
-            this.backLogItem.SetState(new BacklogItemToDoState(this.backLogItem));
+            //this.backlogItem.Notify(new Notification(TypeOfReceiver.ScrumMasterAndProductOwner, $"{backlogItem.GetName} van {backlogItem.GetDeveloperFullName} is afgekeurd door de tester en terug naar to-do verplaatst."));
+
+
+            this.backlogItem.SetState(new BacklogItemToDoState(this.backlogItem));
         }
+
     }
 }

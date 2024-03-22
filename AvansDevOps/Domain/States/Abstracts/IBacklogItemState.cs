@@ -13,5 +13,7 @@
         void SetDoneStatus();
 
         void SetTodoStatus();
+
+        bool CreatesNotification();
     }
 }

@@ -4,11 +4,16 @@ namespace AvansDevOps.Domain.States
 {
     internal class BacklogItemDoingState : IBacklogItemState
     {
-        private readonly BackLogItem backLogItem;
+        private readonly BacklogItem backlogItem;
 
-        public BacklogItemDoingState(BackLogItem backLogItem)
+        public BacklogItemDoingState(BacklogItem backlogItem)
         {
-            this.backLogItem = backLogItem;
+            this.backlogItem = backlogItem;
+        }
+
+        bool IBacklogItemState.CreatesNotification()
+        {
+            return false;
         }
 
         void IBacklogItemState.SetDoingStatus()
@@ -24,10 +29,8 @@ namespace AvansDevOps.Domain.States
         void IBacklogItemState.SetReadyForTestingStatus()
         {
             Console.WriteLine("Status successfully changed to ready-for-testing");
-            //verzend de testers een notificatie
-            this.backLogItem.Notify(new Notification(TypeOfReceiver.Tester, $"{this.backLogItem.GetName} is ready-for-testing"));
 
-            this.backLogItem.SetState(new BacklogItemReadyForTestingState(this.backLogItem));
+            this.backlogItem.SetState(new BacklogItemReadyForTestingState(this.backlogItem));
         }
 
         void IBacklogItemState.SetTestedStatus()
@@ -43,7 +46,7 @@ namespace AvansDevOps.Domain.States
         void IBacklogItemState.SetTodoStatus()
         {
             Console.WriteLine("Status successfully changed to to-do");
-            this.backLogItem.SetState(new BacklogItemToDoState(this.backLogItem));
+            this.backlogItem.SetState(new BacklogItemToDoState(this.backlogItem));
         }
     }
 }

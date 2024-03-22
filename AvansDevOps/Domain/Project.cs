@@ -5,13 +5,13 @@ namespace AvansDevOps.Domain
     internal class Project
     {
         private ProductOwner productOwner;
-        private LinkedList<BackLogItem> projectBacklog = new LinkedList<BackLogItem>();
+        private LinkedList<BacklogItem> projectBacklog = new LinkedList<BacklogItem>();
         private LinkedList<Sprint> sprints = new LinkedList<Sprint>();
 
-        public Project(ProductOwner productOwner, LinkedList<BackLogItem> projectBackLog)
+        public Project(ProductOwner productOwner, LinkedList<BacklogItem> projectBacklog)
         {
             this.productOwner = productOwner;
-            this.projectBacklog = projectBackLog;
+            this.projectBacklog = projectBacklog;
         }
 
         public void ChangeProductOwner(ProductOwner productOwner)

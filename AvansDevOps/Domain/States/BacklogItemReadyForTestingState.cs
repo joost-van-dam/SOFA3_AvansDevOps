@@ -4,18 +4,23 @@ namespace AvansDevOps.Domain.States
 {
     internal class BacklogItemReadyForTestingState : IBacklogItemState
     {
-        private readonly BackLogItem backLogItem;
+        private readonly BacklogItem backlogItem;
 
-        public BacklogItemReadyForTestingState(BackLogItem backLogItem)
+        public BacklogItemReadyForTestingState(BacklogItem backlogItem)
         {
-            this.backLogItem = backLogItem;
+            this.backlogItem = backlogItem;
+        }
+
+        bool IBacklogItemState.CreatesNotification()
+        {
+            return false;
         }
 
         void IBacklogItemState.SetDoingStatus()
         {
             Console.WriteLine("Status can not be changed to doing, the tester first has to review the item!");
             //Console.WriteLine("Status successfully changed to doing");
-            //this.backLogItem.SetState(new BacklogItemDoingState(this.backLogItem));
+            //this.backlogItem.SetState(new BacklogItemDoingState(this.backlogItem));
         }
 
         void IBacklogItemState.SetDoneStatus()
@@ -37,14 +42,14 @@ namespace AvansDevOps.Domain.States
         {
             // gaan we hier nog iets in bouwen met een tester i.p.v. een developer?
             Console.WriteLine("Status successfully changed to testing");
-            this.backLogItem.SetState(new BacklogItemTestingState(this.backLogItem));
+            this.backlogItem.SetState(new BacklogItemTestingState(this.backlogItem));
         }
 
         void IBacklogItemState.SetTodoStatus()
         {
             Console.WriteLine("Status can not be changed to to-do, the tester first has to review the item!");
             //Console.WriteLine("Status successfully changed to to-do");
-            //this.backLogItem.SetState(new BacklogItemToDoState(this.backLogItem));
+            //this.backlogItem.SetState(new BacklogItemToDoState(this.backlogItem));
         }
     }
 }

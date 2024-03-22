@@ -4,11 +4,11 @@ namespace AvansDevOps.Domain.States
 {
     internal class BacklogItemActivityDoneState : IBacklogItemActivityState
     {
-        private readonly BackLogItemActivity backLogItemActivity;
+        private readonly BacklogItemActivity backlogItemActivity;
 
-        public BacklogItemActivityDoneState(BackLogItemActivity backLogItemActivity)
+        public BacklogItemActivityDoneState(BacklogItemActivity backlogItemActivity)
         {
-            this.backLogItemActivity = backLogItemActivity;
+            this.backlogItemActivity = backlogItemActivity;
         }
 
         void IBacklogItemActivityState.SetDoingStatus()
