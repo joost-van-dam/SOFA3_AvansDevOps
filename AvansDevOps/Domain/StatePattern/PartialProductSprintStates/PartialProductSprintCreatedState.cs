@@ -1,6 +1,6 @@
 ﻿using AvansDevOps.Domain.States.Abstracts;
 
-namespace AvansDevOps.Domain.States
+namespace AvansDevOps.Domain.States.PartialProductSprintStates
 {
     internal class PartialProductSprintCreatedState : IPartialProductSprintState
     {
@@ -19,25 +19,25 @@ namespace AvansDevOps.Domain.States
         void IPartialProductSprintState.CancelSprint()
         {
             Console.WriteLine("Sprint canceled!");
-            this.sprint.SetState(new PartialProductSprintCanceledState(this.sprint));
+            sprint.SetState(new PartialProductSprintCanceledState(sprint));
         }
 
         void ISprintState.ChangeEndDate(DateTime endDate)
         {
             Console.WriteLine($"EndDate of the sprint succesfully changed to {endDate.ToString()}");
-            this.sprint.endDate = endDate;
+            sprint.endDate = endDate;
         }
 
         void ISprintState.ChangeName(string name)
         {
             Console.WriteLine($"Sprint name successfully changed to {name}");
-            this.sprint.name = name;
+            sprint.name = name;
         }
 
         void ISprintState.ChangeStartDate(DateTime startDate)
         {
             Console.WriteLine($"StartDate of the sprint succesfully changed to {startDate.ToString()}");
-            this.sprint.startDate = startDate;
+            sprint.startDate = startDate;
         }
 
         void IPartialProductSprintState.FinishSprint()
@@ -50,7 +50,7 @@ namespace AvansDevOps.Domain.States
         void IPartialProductSprintState.StartSprint()
         {
             Console.WriteLine("Sprint started successfully!");
-            this.sprint.SetState(new PartialProductSprintInProgressState(this.sprint));
+            sprint.SetState(new PartialProductSprintInProgressState(sprint));
         }
     }
 }

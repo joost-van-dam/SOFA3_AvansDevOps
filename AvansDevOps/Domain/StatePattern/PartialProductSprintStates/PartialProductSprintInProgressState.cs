@@ -1,6 +1,6 @@
 ﻿using AvansDevOps.Domain.States.Abstracts;
 
-namespace AvansDevOps.Domain.States
+namespace AvansDevOps.Domain.States.PartialProductSprintStates
 {
     internal class PartialProductSprintInProgressState : IPartialProductSprintState
     {
@@ -39,7 +39,7 @@ namespace AvansDevOps.Domain.States
         void IPartialProductSprintState.FinishSprint()
         {
             Console.WriteLine("Sprint finished successfully!");
-            this.sprint.SetState(new PartialProductSprintFinishedState(this.sprint));
+            sprint.SetState(new PartialProductSprintFinishedState(sprint));
         }
 
 

@@ -1,4 +1,6 @@
-﻿namespace AvansDevOps.Domain.Strategy
+﻿using AvansDevOps.Domain.Strategy.Abstracts;
+
+namespace AvansDevOps.Domain.Strategy
 {
     internal class SprintPDFRapportExportStrategy : ISprintRapportExportStrategy
     {

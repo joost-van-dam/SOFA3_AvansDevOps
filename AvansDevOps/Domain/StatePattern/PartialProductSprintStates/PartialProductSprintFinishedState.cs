@@ -1,6 +1,6 @@
 ﻿using AvansDevOps.Domain.States.Abstracts;
 
-namespace AvansDevOps.Domain.States
+namespace AvansDevOps.Domain.States.PartialProductSprintStates
 {
     internal class PartialProductSprintFinishedState : IPartialProductSprintState
     {
@@ -16,7 +16,7 @@ namespace AvansDevOps.Domain.States
             // HIER MOET DAT UPLOAD DOCUMENT VOOR DE SCRUMMASTER KOMEN!!!
             // IETS VAN EEN CHECK
 
-            this.sprint.SetState(new PartialProductSprintCompletedState(this.sprint));
+            sprint.SetState(new PartialProductSprintCompletedState(sprint));
         }
 
         void IPartialProductSprintState.CancelSprint()

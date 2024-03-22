@@ -1,6 +1,6 @@
 ﻿using AvansDevOps.Domain.States.Abstracts;
 
-namespace AvansDevOps.Domain.States
+namespace AvansDevOps.Domain.States.BacklogItemStates
 {
     internal class BacklogItemTestingState : IBacklogItemState
     {
@@ -32,13 +32,13 @@ namespace AvansDevOps.Domain.States
         void IBacklogItemState.SetReadyForTestingStatus()
         {
             Console.WriteLine("Status successfully changed to ready-for-testing");
-            this.backlogItem.SetState(new BacklogItemReadyForTestingState(this.backlogItem));
+            backlogItem.SetState(new BacklogItemReadyForTestingState(backlogItem));
         }
 
         void IBacklogItemState.SetTestedStatus()
         {
             Console.WriteLine("Status successfully changed to tested");
-            this.backlogItem.SetState(new BacklogItemTestedState(this.backlogItem));
+            backlogItem.SetState(new BacklogItemTestedState(backlogItem));
         }
 
         void IBacklogItemState.SetTestingStatus()
@@ -53,7 +53,7 @@ namespace AvansDevOps.Domain.States
             //this.backlogItem.Notify(new Notification(TypeOfReceiver.ScrumMasterAndProductOwner, $"{backlogItem.GetName} van {backlogItem.GetDeveloperFullName} is afgekeurd door de tester en terug naar to-do verplaatst."));
 
 
-            this.backlogItem.SetState(new BacklogItemToDoState(this.backlogItem));
+            backlogItem.SetState(new BacklogItemToDoState(backlogItem));
         }
 
     }

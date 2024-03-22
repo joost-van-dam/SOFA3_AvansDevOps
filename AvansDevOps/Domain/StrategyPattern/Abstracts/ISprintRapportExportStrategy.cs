@@ -1,4 +1,4 @@
-﻿namespace AvansDevOps.Domain.Strategy
+﻿namespace AvansDevOps.Domain.Strategy.Abstracts
 {
     internal interface ISprintRapportExportStrategy
     {

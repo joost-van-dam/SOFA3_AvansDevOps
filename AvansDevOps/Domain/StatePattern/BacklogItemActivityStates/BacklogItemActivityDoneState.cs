@@ -1,6 +1,6 @@
 ﻿using AvansDevOps.Domain.States.Abstracts;
 
-namespace AvansDevOps.Domain.States
+namespace AvansDevOps.Domain.States.BacklogItemActivityStates
 {
     internal class BacklogItemActivityDoneState : IBacklogItemActivityState
     {

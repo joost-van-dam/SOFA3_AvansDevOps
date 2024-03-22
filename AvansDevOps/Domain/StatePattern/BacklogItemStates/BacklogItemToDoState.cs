@@ -1,6 +1,6 @@
 ﻿using AvansDevOps.Domain.States.Abstracts;
 
-namespace AvansDevOps.Domain.States
+namespace AvansDevOps.Domain.States.BacklogItemStates
 {
     internal class BacklogItemToDoState : IBacklogItemState
     {
@@ -19,7 +19,7 @@ namespace AvansDevOps.Domain.States
         void IBacklogItemState.SetDoingStatus()
         {
             Console.WriteLine("Status successfully changed to doing");
-            this.backlogItem.SetState(new BacklogItemDoingState(this.backlogItem));
+            backlogItem.SetState(new BacklogItemDoingState(backlogItem));
         }
 
         void IBacklogItemState.SetDoneStatus()

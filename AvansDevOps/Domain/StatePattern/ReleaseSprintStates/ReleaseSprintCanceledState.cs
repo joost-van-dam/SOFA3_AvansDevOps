@@ -1,24 +1,24 @@
 ﻿using AvansDevOps.Domain.States.Abstracts;
 
-namespace AvansDevOps.Domain.States
+namespace AvansDevOps.Domain.States.ReleaseSprintStates
 {
-    internal class ReleaseSprintReleaseCanceledState : IReleaseSprintState
+    internal class ReleaseSprintCanceledState : IReleaseSprintState
     {
         private readonly ReleaseSprint sprint;
 
-        public ReleaseSprintReleaseCanceledState(ReleaseSprint sprint)
+        public ReleaseSprintCanceledState(ReleaseSprint sprint)
         {
             this.sprint = sprint;
         }
 
         void IReleaseSprintState.CancelRelease()
         {
-            Console.WriteLine("The release has already been canceled!");
+            Console.WriteLine("The sprint has already been canceled, so there won't be any release!");
         }
 
         void IReleaseSprintState.CancelSprint()
         {
-            Console.WriteLine("The sprint has already been completed, so can not be canceled anymore!");
+            Console.WriteLine("The sprint has already been canceled!");
         }
 
         void ISprintState.ChangeEndDate(DateTime endDate)
@@ -38,17 +38,17 @@ namespace AvansDevOps.Domain.States
 
         void IReleaseSprintState.FinishSprint()
         {
-            Console.WriteLine("The sprint has already been completed, so can not be finished anymore!");
+            Console.WriteLine("The sprint has already been canceled and can not be finished!");
         }
 
         void IReleaseSprintState.Release()
         {
-            Console.WriteLine("The release has already been completed!");
+            Console.WriteLine("The sprint has already been canceled and can not be released!");
         }
 
         void IReleaseSprintState.StartSprint()
         {
-            Console.WriteLine("The sprint has already been completed, so can not be started anymore!");
+            Console.WriteLine("The sprint has already been canceled and can not be started!");
         }
     }
 }

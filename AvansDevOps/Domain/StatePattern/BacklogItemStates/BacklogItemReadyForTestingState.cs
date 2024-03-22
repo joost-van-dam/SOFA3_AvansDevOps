@@ -1,6 +1,6 @@
 ﻿using AvansDevOps.Domain.States.Abstracts;
 
-namespace AvansDevOps.Domain.States
+namespace AvansDevOps.Domain.States.BacklogItemStates
 {
     internal class BacklogItemReadyForTestingState : IBacklogItemState
     {
@@ -42,7 +42,7 @@ namespace AvansDevOps.Domain.States
         {
             // gaan we hier nog iets in bouwen met een tester i.p.v. een developer?
             Console.WriteLine("Status successfully changed to testing");
-            this.backlogItem.SetState(new BacklogItemTestingState(this.backlogItem));
+            backlogItem.SetState(new BacklogItemTestingState(backlogItem));
         }
 
         void IBacklogItemState.SetTodoStatus()

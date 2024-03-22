@@ -1,6 +1,6 @@
 ﻿using AvansDevOps.Domain.States.Abstracts;
 
-namespace AvansDevOps.Domain.States
+namespace AvansDevOps.Domain.States.ReleaseSprintStates
 {
     internal class ReleaseSprintFinishedState : IReleaseSprintState
     {
@@ -14,7 +14,7 @@ namespace AvansDevOps.Domain.States
         {
             // hier goedkeuring van product owner of scrum master toevoegen!
 
-            this.sprint.SetState(new ReleaseSprintReleaseCanceledState(this.sprint));
+            sprint.SetState(new ReleaseSprintReleaseCanceledState(sprint));
         }
 
         void IReleaseSprintState.CancelSprint()
@@ -49,7 +49,7 @@ namespace AvansDevOps.Domain.States
             // hier ook de pipeline aftrappen en checken of hij het doet anders foutmelding geven
 
 
-            this.sprint.SetState(new ReleaseSprintReleaseCompletedState(this.sprint));
+            sprint.SetState(new ReleaseSprintReleaseCompletedState(sprint));
         }
 
         void IReleaseSprintState.StartSprint()

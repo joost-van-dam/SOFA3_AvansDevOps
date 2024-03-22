@@ -1,19 +1,19 @@
 ﻿using AvansDevOps.Domain.States.Abstracts;
 
-namespace AvansDevOps.Domain.States
+namespace AvansDevOps.Domain.States.ReleaseSprintStates
 {
-    internal class ReleaseSprintReleaseCompletedState : IReleaseSprintState
+    internal class ReleaseSprintReleaseCanceledState : IReleaseSprintState
     {
         private readonly ReleaseSprint sprint;
 
-        public ReleaseSprintReleaseCompletedState(ReleaseSprint sprint)
+        public ReleaseSprintReleaseCanceledState(ReleaseSprint sprint)
         {
             this.sprint = sprint;
         }
 
         void IReleaseSprintState.CancelRelease()
         {
-            Console.WriteLine("The sprint has already been released, so can not be canceled anymore!");
+            Console.WriteLine("The release has already been canceled!");
         }
 
         void IReleaseSprintState.CancelSprint()

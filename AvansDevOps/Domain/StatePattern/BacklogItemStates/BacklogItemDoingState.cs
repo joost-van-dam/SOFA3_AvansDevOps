@@ -1,6 +1,6 @@
 ﻿using AvansDevOps.Domain.States.Abstracts;
 
-namespace AvansDevOps.Domain.States
+namespace AvansDevOps.Domain.States.BacklogItemStates
 {
     internal class BacklogItemDoingState : IBacklogItemState
     {
@@ -30,7 +30,7 @@ namespace AvansDevOps.Domain.States
         {
             Console.WriteLine("Status successfully changed to ready-for-testing");
 
-            this.backlogItem.SetState(new BacklogItemReadyForTestingState(this.backlogItem));
+            backlogItem.SetState(new BacklogItemReadyForTestingState(backlogItem));
         }
 
         void IBacklogItemState.SetTestedStatus()
@@ -46,7 +46,7 @@ namespace AvansDevOps.Domain.States
         void IBacklogItemState.SetTodoStatus()
         {
             Console.WriteLine("Status successfully changed to to-do");
-            this.backlogItem.SetState(new BacklogItemToDoState(this.backlogItem));
+            backlogItem.SetState(new BacklogItemToDoState(backlogItem));
         }
     }
 }

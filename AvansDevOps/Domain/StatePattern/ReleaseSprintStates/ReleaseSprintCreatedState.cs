@@ -1,6 +1,6 @@
 ﻿using AvansDevOps.Domain.States.Abstracts;
 
-namespace AvansDevOps.Domain.States
+namespace AvansDevOps.Domain.States.ReleaseSprintStates
 {
     internal class ReleaseSprintCreatedState : IReleaseSprintState
     {
@@ -19,25 +19,25 @@ namespace AvansDevOps.Domain.States
         void IReleaseSprintState.CancelSprint()
         {
             Console.WriteLine("Sprint canceled!");
-            this.sprint.SetState(new ReleaseSprintCanceledState(this.sprint));
+            sprint.SetState(new ReleaseSprintCanceledState(sprint));
         }
 
         void ISprintState.ChangeEndDate(DateTime endDate)
         {
             Console.WriteLine($"EndDate of the sprint succesfully changed to {endDate.ToString()}");
-            this.sprint.endDate = endDate;
+            sprint.endDate = endDate;
         }
 
         void ISprintState.ChangeName(string name)
         {
             Console.WriteLine($"Sprint name successfully changed to {name}");
-            this.sprint.name = name;
+            sprint.name = name;
         }
 
         void ISprintState.ChangeStartDate(DateTime startDate)
         {
             Console.WriteLine($"StartDate of the sprint succesfully changed to {startDate.ToString()}");
-            this.sprint.startDate = startDate;
+            sprint.startDate = startDate;
         }
 
         void IReleaseSprintState.FinishSprint()
@@ -53,7 +53,7 @@ namespace AvansDevOps.Domain.States
         void IReleaseSprintState.StartSprint()
         {
             Console.WriteLine("Sprint started successfully!");
-            this.sprint.SetState(new ReleaseSprintInProgressState(this.sprint));
+            sprint.SetState(new ReleaseSprintInProgressState(sprint));
         }
     }
 }

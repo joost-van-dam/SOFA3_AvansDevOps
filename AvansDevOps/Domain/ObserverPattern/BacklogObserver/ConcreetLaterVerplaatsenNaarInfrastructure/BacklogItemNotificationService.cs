@@ -1,5 +1,5 @@
-﻿using AvansDevOps.Domain.States;
-using AvansDevOps.Domain.States.Abstracts;
+﻿using AvansDevOps.Domain.States.Abstracts;
+using AvansDevOps.Domain.States.BacklogItemStates;
 using AvansDevOps.Infrastructure.Adapters;
 
 namespace AvansDevOps.Domain.ObserverPattern.BacklogObserver.ConcreetLaterVerplaatsenNaarInfrastructure

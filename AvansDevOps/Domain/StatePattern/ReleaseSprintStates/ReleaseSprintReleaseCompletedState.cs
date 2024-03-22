@@ -1,24 +1,24 @@
 ﻿using AvansDevOps.Domain.States.Abstracts;
 
-namespace AvansDevOps.Domain.States
+namespace AvansDevOps.Domain.States.ReleaseSprintStates
 {
-    internal class ReleaseSprintInProgressState : IReleaseSprintState
+    internal class ReleaseSprintReleaseCompletedState : IReleaseSprintState
     {
         private readonly ReleaseSprint sprint;
 
-        public ReleaseSprintInProgressState(ReleaseSprint sprint)
+        public ReleaseSprintReleaseCompletedState(ReleaseSprint sprint)
         {
             this.sprint = sprint;
         }
 
         void IReleaseSprintState.CancelRelease()
         {
-            Console.WriteLine("The sprint has not finished yet, so the release can not be canceled yet!");
+            Console.WriteLine("The sprint has already been released, so can not be canceled anymore!");
         }
 
         void IReleaseSprintState.CancelSprint()
         {
-            Console.WriteLine("The sprint has already been started, so can not be canceled anymore.");
+            Console.WriteLine("The sprint has already been completed, so can not be canceled anymore!");
         }
 
         void ISprintState.ChangeEndDate(DateTime endDate)
@@ -38,18 +38,17 @@ namespace AvansDevOps.Domain.States
 
         void IReleaseSprintState.FinishSprint()
         {
-            Console.WriteLine("Sprint finished successfully!");
-            this.sprint.SetState(new ReleaseSprintFinishedState(this.sprint));
+            Console.WriteLine("The sprint has already been completed, so can not be finished anymore!");
         }
 
         void IReleaseSprintState.Release()
         {
-            Console.WriteLine("The sprint has not finished yet, so can not be released!");
+            Console.WriteLine("The release has already been completed!");
         }
 
         void IReleaseSprintState.StartSprint()
         {
-            Console.WriteLine("The sprint has already been started!");
+            Console.WriteLine("The sprint has already been completed, so can not be started anymore!");
         }
     }
 }
