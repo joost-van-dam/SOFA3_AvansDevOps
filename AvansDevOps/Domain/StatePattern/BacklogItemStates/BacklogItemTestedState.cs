@@ -24,8 +24,16 @@ namespace AvansDevOps.Domain.States.BacklogItemStates
 
         void IBacklogItemState.SetDoneStatus()
         {
-            Console.WriteLine("Status successfully changed to done");
-            backlogItem.SetState(new BacklogItemDoneState(backlogItem));
+            if (this.backlogItem.CheckIfAllActivitiesAreDone())
+            {
+                Console.WriteLine("Status successfully changed to done");
+                backlogItem.SetState(new BacklogItemDoneState(backlogItem));
+            }
+            else
+            {
+                Console.WriteLine("The backlogitem has atleast one activity which status is not 'done' yet, please finish this one first before completing this item");
+            }
+
         }
 
         void IBacklogItemState.SetReadyForTestingStatus()

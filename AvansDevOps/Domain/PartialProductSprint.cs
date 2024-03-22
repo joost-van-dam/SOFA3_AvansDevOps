@@ -1,6 +1,6 @@
 ﻿using AvansDevOps.Domain.People;
-using AvansDevOps.Domain.States;
 using AvansDevOps.Domain.States.Abstracts;
+using AvansDevOps.Domain.States.PartialProductSprintStates;
 
 namespace AvansDevOps.Domain
 {
@@ -49,6 +49,11 @@ namespace AvansDevOps.Domain
         internal void SetState(IPartialProductSprintState sprintState)
         {
             this.sprintState = sprintState;
+        }
+
+        public override void Notify(Sprint sprint, ISprintState newState)
+        {
+            throw new NotImplementedException();
         }
     }
 }
