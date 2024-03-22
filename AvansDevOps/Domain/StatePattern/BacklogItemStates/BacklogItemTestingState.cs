@@ -53,7 +53,7 @@ namespace AvansDevOps.Domain.States.BacklogItemStates
             //this.backlogItem.Notify(new Notification(TypeOfReceiver.ScrumMasterAndProductOwner, $"{backlogItem.GetName} van {backlogItem.GetDeveloperFullName} is afgekeurd door de tester en terug naar to-do verplaatst."));
 
 
-            backlogItem.SetState(new BacklogItemToDoState(backlogItem));
+            backlogItem.SetState(new BacklogItemTestingRejectedState(backlogItem));
         }
 
     }

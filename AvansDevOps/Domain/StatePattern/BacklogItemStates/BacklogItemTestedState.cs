@@ -1,4 +1,5 @@
-﻿using AvansDevOps.Domain.States.Abstracts;
+﻿using AvansDevOps.Domain.StatePattern.BacklogItemStates;
+using AvansDevOps.Domain.States.Abstracts;
 
 namespace AvansDevOps.Domain.States.BacklogItemStates
 {
@@ -30,7 +31,7 @@ namespace AvansDevOps.Domain.States.BacklogItemStates
         void IBacklogItemState.SetReadyForTestingStatus()
         {
             Console.WriteLine("Status successfully changed to ready-for-testing");
-            backlogItem.SetState(new BacklogItemReadyForTestingState(backlogItem));
+            backlogItem.SetState(new BacklogItemDefinitionOfDoneRejectedState(backlogItem));
         }
 
         void IBacklogItemState.SetTestedStatus()

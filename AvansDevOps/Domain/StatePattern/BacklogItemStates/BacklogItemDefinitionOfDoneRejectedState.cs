@@ -1,9 +1,18 @@
 ﻿using AvansDevOps.Domain.States.Abstracts;
+using AvansDevOps.Domain.States.BacklogItemStates;
 
-namespace AvansDevOps.Domain.States.BacklogItemStates
+namespace AvansDevOps.Domain.StatePattern.BacklogItemStates
 {
-    internal class BacklogItemRejectedState : IBacklogItemState
+    internal class BacklogItemDefinitionOfDoneRejectedState : IBacklogItemState
     {
+        private readonly BacklogItem backlogItem;
+
+        public BacklogItemDefinitionOfDoneRejectedState(BacklogItem backlogItem)
+        {
+            this.backlogItem = backlogItem;
+            backlogItem.SetState(new BacklogItemReadyForTestingState(this.backlogItem));
+        }
+
         bool IBacklogItemState.CreatesNotification()
         {
             return true;
