@@ -2,16 +2,16 @@
 using AvansDevOps.Domain.States.Abstracts;
 using AvansDevOps.Infrastructure.Adapters;
 
-namespace AvansDevOps.Domain.ObserverPattern.ConcreetLaterVerplaatsenNaarInfrastructure
+namespace AvansDevOps.Domain.ObserverPattern.BacklogObserver.ConcreetLaterVerplaatsenNaarInfrastructure
 {
-    internal class NotificationService : IBacklogItemObserver
+    internal class BacklogItemNotificationService : IBacklogItemObserver
     {
         private Project project;
 
         private List<INotifier> notifiers = new List<INotifier>();
 
 
-        public NotificationService(Project project, List<INotifier> notifiers)
+        public BacklogItemNotificationService(Project project, List<INotifier> notifiers)
         {
             this.project = project;
             this.notifiers = notifiers;

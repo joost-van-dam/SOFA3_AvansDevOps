@@ -1,11 +1,11 @@
 ﻿using AvansDevOps.Domain.States.Abstracts;
 
-namespace AvansDevOps.Domain.ObserverPattern
+namespace AvansDevOps.Domain.ObserverPattern.BacklogObserver
 {
     internal interface IObservableBacklogItem
     {
-        void Attach(IBacklogItemObserver observer);
-        void Detach(IBacklogItemObserver observer);
+        void Subscribe(IBacklogItemObserver observer);
+        void Unsubscribe(IBacklogItemObserver observer);
         void Notify(BacklogItem backlogItem, IBacklogItemState newState);
     }
 }
