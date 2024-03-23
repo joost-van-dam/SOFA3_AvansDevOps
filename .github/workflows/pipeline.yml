@@ -36,6 +36,6 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        dotnet sonarscanner begin /k:"YourProjectKey" /o:"YourOrganizationKey" /d:sonar.login="${SONAR_TOKEN}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml"
+        dotnet sonarscanner begin /k:"joost" /o:"joost" /d:sonar.login="${SONAR_TOKEN}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml"
         dotnet build
         dotnet sonarscanner end /d:sonar.login="${SONAR_TOKEN}"
