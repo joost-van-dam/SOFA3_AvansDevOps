@@ -1,6 +1,7 @@
 ﻿using AvansDevOps.Domain;
 using AvansDevOps.Domain.ObserverPattern.BacklogObserver;
 using AvansDevOps.Domain.People;
+using AvansDevOps.Domain.StatePattern.BacklogItemStates;
 using AvansDevOps.Domain.States.Abstracts;
 using AvansDevOps.Domain.States.BacklogItemStates;
 using Moq;
@@ -13,8 +14,16 @@ namespace AvansDevOps.Tests.BacklogItemTests
         {
         }
 
-        [Fact]
-        internal void SetState_CallsNotifyIfTheStateCreatesANotification()
+        [Theory]
+        [InlineData(typeof(BacklogItemToDoState), 0)]
+        [InlineData(typeof(BacklogItemDoingState), 0)]
+        [InlineData(typeof(BacklogItemReadyForTestingState), 0)]
+        [InlineData(typeof(BacklogItemTestingState), 0)]
+        [InlineData(typeof(BacklogItemTestingRejectedState), 1)]
+        [InlineData(typeof(BacklogItemTestedState), 0)]
+        [InlineData(typeof(BacklogItemDoneState), 0)]
+        [InlineData(typeof(BacklogItemDefinitionOfDoneRejectedState), 1)]
+        internal void SetState_CallsNotifyIfTheStateCreatesANotification(Type stateType, int expectedTimesCalled)
         {
             // Arrange
             string name = "BacklogItem 1";
@@ -23,17 +32,25 @@ namespace AvansDevOps.Tests.BacklogItemTests
             LinkedList<BacklogItemActivity> backlogItemActivities = new LinkedList<BacklogItemActivity>();
             BacklogItem backlogItem = new BacklogItem(name, description, developer, backlogItemActivities);
 
-            IBacklogItemState oldState = new BacklogItemTestingRejectedState(backlogItem);
+            IBacklogItemState newState = (IBacklogItemState)Activator.CreateInstance(stateType, backlogItem);
 
             // Create a mock observer
             var mockObserver = new Mock<IBacklogItemObserver>();
             backlogItem.Subscribe(mockObserver.Object);
 
             // Act
-            backlogItem.SetState(oldState);
+            backlogItem.SetState(newState);
 
             // Assert
-            mockObserver.Verify(x => x.Update(It.IsAny<BacklogItem>(), It.IsAny<IBacklogItemState>()), Times.Once);
+            if (expectedTimesCalled == 0)
+            {
+                mockObserver.Verify(x => x.Update(It.IsAny<BacklogItem>(), It.IsAny<IBacklogItemState>()), Times.Never);
+            }
+            else if (expectedTimesCalled == 1)
+            {
+                mockObserver.Verify(x => x.Update(It.IsAny<BacklogItem>(), It.IsAny<IBacklogItemState>()), Times.Once);
+            }
+
 
         }
 
