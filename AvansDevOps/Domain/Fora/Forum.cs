@@ -2,7 +2,7 @@
 {
     internal class Forum
     {
-        private List<Thread> threads;
+        private readonly List<Thread> threads;
 
         public Forum()
         {

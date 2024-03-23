@@ -5,7 +5,7 @@ namespace AvansDevOps.Domain.CompositeAndVisitor
 {
     internal class Command : Component
     {
-        private string command;
+        private readonly string command;
 
         public Command(string command)
         {
@@ -17,7 +17,7 @@ namespace AvansDevOps.Domain.CompositeAndVisitor
             return this.command;
         }
 
-        internal override void AcceptVisitor(Visitor visitor)
+        internal override void AcceptVisitor(IVisitor visitor)
         {
             visitor.VisitCommand(this);
         }

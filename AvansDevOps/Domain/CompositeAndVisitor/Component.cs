@@ -4,6 +4,6 @@ namespace AvansDevOps.Domain.Pipeline
 {
     internal abstract class Component
     {
-        internal abstract void AcceptVisitor(Visitor visitor);
+        internal abstract void AcceptVisitor(IVisitor visitor);
     }
 }

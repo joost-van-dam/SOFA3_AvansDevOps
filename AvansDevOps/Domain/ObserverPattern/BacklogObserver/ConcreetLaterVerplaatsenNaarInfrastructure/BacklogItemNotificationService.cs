@@ -6,9 +6,9 @@ namespace AvansDevOps.Domain.ObserverPattern.BacklogObserver.ConcreetLaterVerpla
 {
     internal class BacklogItemNotificationService : IBacklogItemObserver
     {
-        private Project project;
+        private readonly Project project;
 
-        private List<INotifier> notifiers = new List<INotifier>();
+        private readonly List<INotifier> notifiers = new List<INotifier>();
 
 
         public BacklogItemNotificationService(Project project, List<INotifier> notifiers)
@@ -51,28 +51,6 @@ namespace AvansDevOps.Domain.ObserverPattern.BacklogObserver.ConcreetLaterVerpla
 
 
 
-
-
-        //if (backlogItem.GetState() == tyoBacklogItemTestingState
-
-
-
-
-        //notification.GetTypeOfReceiver();
-
-        //if (notification.GetTypeOfReceiver() == TypeOfReceiver.Tester)
-        //{
-        //    //SendNotification(new List<Person>(this.project.GetTesters().Cast<Person>()));
-        //    SendNotification(new List<Person>(this.project.GetTesters()), notification.GetMessage());
-        //}
-        //else if (notification.GetTypeOfReceiver() == TypeOfReceiver.ScrumMasterAndProductOwner)
-        //{
-        //    SendNotification(new List<Person> { this.project.GetScrumMaster(), this.project.GetProductOwner() }, notification.GetMessage());
-        //}
-
-        // in deze class komt de logica voor het versturen van de notificaties via het juiste medium
-
-        // hier dus de berichten sturen naar de juiste personen met het juiste medium
 
 
 

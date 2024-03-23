@@ -1,21 +1,21 @@
 ﻿namespace AvansDevOps.Domain.CompositeAndVisitor
 {
-    internal class ExecutionVisitor : Visitor
+    internal class ExecutionVisitor : IVisitor
     {
-        void Visitor.VisitPipeline(Pipeline pipeline)
+        void IVisitor.VisitPipeline(Pipeline pipeline)
         {
             Console.WriteLine("===================================");
             Console.WriteLine($"Execution of: {pipeline.GetName()}");
             Console.WriteLine("===================================");
         }
 
-        void Visitor.VisitStage(Stage stage)
+        void IVisitor.VisitStage(Stage stage)
         {
             Console.WriteLine();
             Console.WriteLine($"Stage: {stage.GetName()}");
         }
 
-        void Visitor.VisitCommand(Command command)
+        void IVisitor.VisitCommand(Command command)
         {
             Console.WriteLine($"Executed Command: {command.GetCommand()}");
         }

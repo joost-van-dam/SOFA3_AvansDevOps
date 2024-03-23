@@ -12,7 +12,7 @@ namespace AvansDevOps.Domain.CompositeAndVisitor
             parts.Add(comp);
         }
 
-        internal override void AcceptVisitor(Visitor visitor)
+        internal override void AcceptVisitor(IVisitor visitor)
         {
             foreach (Component component in this.parts)
             {

@@ -1,6 +1,6 @@
 ﻿namespace AvansDevOps.Domain.CompositeAndVisitor
 {
-    internal interface Visitor
+    internal interface IVisitor
     {
         void VisitPipeline(Pipeline pipeline);
 

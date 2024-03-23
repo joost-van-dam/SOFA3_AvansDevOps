@@ -4,9 +4,9 @@ namespace AvansDevOps.Domain.Fora
 {
     internal class Comment
     {
-        private Thread thread;
+        private readonly Thread thread;
         private string content;
-        private Person author;
+        private readonly Person author;
         private DateTime postDate;
         // comments on this comment
         private LinkedList<Comment> comments;
@@ -33,6 +33,11 @@ namespace AvansDevOps.Domain.Fora
         public DateTime GetDate()
         {
             return postDate;
+        }
+
+        public void ChangeContent(string content)
+        {
+            this.content = content;
         }
 
         internal void AddCommmetOnComment(Comment comment)

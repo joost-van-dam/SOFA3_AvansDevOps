@@ -2,7 +2,7 @@
 {
     internal class Pipeline : CompositeComponent
     {
-        private string name;
+        private readonly string name;
 
         public Pipeline(string name)
         {
@@ -14,7 +14,7 @@
             return this.name;
         }
 
-        internal override void AcceptVisitor(Visitor visitor)
+        internal override void AcceptVisitor(IVisitor visitor)
         {
             visitor.VisitPipeline(this);
             base.AcceptVisitor(visitor);

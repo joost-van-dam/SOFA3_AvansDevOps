@@ -5,10 +5,10 @@ namespace AvansDevOps.Domain.Fora
 {
     internal class Thread
     {
-        private LinkedList<Comment> comments = new LinkedList<Comment>();
+        private readonly LinkedList<Comment> comments = new LinkedList<Comment>();
         private string topic { get; set; }
         private Person creator { get; set; }
-        private BacklogItem backlogItem { get; }
+        private readonly BacklogItem backlogItem;
         public Thread(string topic, Person creator, BacklogItem backlogItem)
         {
             this.topic = topic;

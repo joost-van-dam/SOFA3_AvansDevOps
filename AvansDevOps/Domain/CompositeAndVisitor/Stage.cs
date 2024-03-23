@@ -2,7 +2,7 @@
 {
     internal class Stage : CompositeComponent
     {
-        private string name;
+        private readonly string name;
 
         public Stage(string name)
         {
@@ -14,10 +14,8 @@
             return this.name;
         }
 
-        internal override void AcceptVisitor(Visitor visitor)
+        internal override void AcceptVisitor(IVisitor visitor)
         {
-            //Console.WriteLine("wordt deze wel uitgevoerd??");
-            //Console.WriteLine($"{name} dit is de naam test");
             visitor.VisitStage(this);
             base.AcceptVisitor(visitor);
         }
