@@ -4,6 +4,6 @@ namespace AvansDevOps.Domain.ObserverPattern.BacklogObserver
 {
     internal interface IBacklogItemObserver
     {
-        public void Update(BacklogItem backlogItem, IBacklogItemState newState);
+        public void Update(BacklogItem backlogItem, IBacklogItemState oldState);
     }
 }

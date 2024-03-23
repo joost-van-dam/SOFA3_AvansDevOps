@@ -6,6 +6,6 @@ namespace AvansDevOps.Domain.ObserverPattern.BacklogObserver
     {
         void Subscribe(IBacklogItemObserver observer);
         void Unsubscribe(IBacklogItemObserver observer);
-        void Notify(BacklogItem backlogItem, IBacklogItemState newState);
+        void Notify(BacklogItem backlogItem, IBacklogItemState oldState);
     }
 }

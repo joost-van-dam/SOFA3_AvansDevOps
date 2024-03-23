@@ -6,6 +6,6 @@ namespace AvansDevOps.Domain.ObserverPattern.SprintObserver
     {
         void Subscribe(ISprintObserver observer);
         void Unsubscribe(ISprintObserver observer);
-        void Notify(Sprint sprint, ISprintState newState);
+        void Notify(Sprint sprint, ISprintState oldState);
     }
 }

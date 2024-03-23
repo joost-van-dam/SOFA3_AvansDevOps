@@ -11,7 +11,7 @@ namespace AvansDevOps.Domain
         private string name { get; set; }
         private string description { get; set; }
         private Developer developer { get; set; }
-        private LinkedList<BacklogItemActivity> backlogItemActivities = new LinkedList<BacklogItemActivity>();
+        private readonly LinkedList<BacklogItemActivity> backlogItemActivities = new LinkedList<BacklogItemActivity>();
         private IBacklogItemState backlogItemState { get; set; }
 
         private readonly LinkedList<IBacklogItemObserver> observers = new LinkedList<IBacklogItemObserver>();
@@ -66,16 +66,9 @@ namespace AvansDevOps.Domain
 
         internal bool CheckIfAllActivitiesAreDone()
         {
-            foreach (BacklogItemActivity backlogItemActivity in this.backlogItemActivities)
-            {
-                if (backlogItemActivity.GetState() is not BacklogItemActivityDoneState)
-                {
-                    return false;
-                }
-            }
-
-            return true;
+            return this.backlogItemActivities.All(backlogItemActivity => backlogItemActivity.GetState() is BacklogItemActivityDoneState);
         }
+
 
         // een observer is GEEN persoon maar bijv. een NotificationService, de notification service zoekt dan ook wat er moet gebeuren met de notificatie
         public void Subscribe(IBacklogItemObserver observer)

@@ -7,9 +7,9 @@ namespace AvansDevOps.Domain.Fora
         private readonly Thread thread;
         private string content;
         private readonly Person author;
-        private DateTime postDate;
+        private readonly DateTime postDate;
         // comments on this comment
-        private LinkedList<Comment> comments;
+        private readonly LinkedList<Comment> comments;
 
         public Comment(Thread thread, string content, Person author)
         {
