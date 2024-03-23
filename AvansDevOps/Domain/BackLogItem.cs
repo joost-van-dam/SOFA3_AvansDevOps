@@ -14,7 +14,7 @@ namespace AvansDevOps.Domain
         private LinkedList<BacklogItemActivity> backlogItemActivities = new LinkedList<BacklogItemActivity>();
         private IBacklogItemState backlogItemState { get; set; }
 
-        private LinkedList<IBacklogItemObserver> observers = new LinkedList<IBacklogItemObserver>();
+        private readonly LinkedList<IBacklogItemObserver> observers = new LinkedList<IBacklogItemObserver>();
 
         public BacklogItem(string name, string description, Developer developer, LinkedList<BacklogItemActivity> backlogItemActivities)
         {
@@ -46,7 +46,7 @@ namespace AvansDevOps.Domain
 
             // in de backlogitem ligt de verantwoordelijk voor het versturen van de notificatie
 
-            if (backlogItemState.CreatesNotification() == true)
+            if (backlogItemState.CreatesNotification())
             {
                 // verstuur notificatie
                 Notify(this, oldState);
