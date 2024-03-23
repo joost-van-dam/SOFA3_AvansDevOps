@@ -1,0 +1,41 @@
+name: SOFA3 Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --no-restore
+
+    - name: Test
+      run: dotnet test --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+
+    - name: Install SonarCloud CLI
+      run: dotnet tool install --global dotnet-sonarscanner
+
+    - name: Run SonarCloud Analysis
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        dotnet sonarscanner begin /k:"YourProjectKey" /o:"YourOrganizationKey" /d:sonar.login="${SONAR_TOKEN}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml"
+        dotnet build
+        dotnet sonarscanner end /d:sonar.login="${SONAR_TOKEN}"
