@@ -18,14 +18,14 @@ namespace AvansDevOps.Tests.ProjectTests
         internal void CreatesSprint_AddsASprintOfTheCorrectConcreteTypeToTheSpintsListInTheProject(TypeOfSprints typeOfSprint)
         {
             // Dirty code but can not be fixed :( 
-            Type concreteTypeOfSprint = null;
+            Type expectedConcreteTypeOfSprint = null;
             if (typeOfSprint == TypeOfSprints.PARTIALPRODUCTSPRINT)
             {
-                concreteTypeOfSprint = typeof(PartialProductSprint);
+                expectedConcreteTypeOfSprint = typeof(PartialProductSprint);
             }
             else if (typeOfSprint == TypeOfSprints.RELEASESPRINT)
             {
-                concreteTypeOfSprint = typeof(ReleaseSprint);
+                expectedConcreteTypeOfSprint = typeof(ReleaseSprint);
             }
 
             // Arrange
@@ -45,7 +45,7 @@ namespace AvansDevOps.Tests.ProjectTests
             project.CreateSprint(typeOfSprint, name, startDate, endDate, scrumMaster, developers, testers, backlogitems);
 
             // Assert
-            project.GetMostRecentSprint().Should().BeOfType(concreteTypeOfSprint);
+            project.GetMostRecentSprint().Should().BeOfType(expectedConcreteTypeOfSprint);
         }
     }
 }
