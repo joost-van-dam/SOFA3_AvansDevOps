@@ -45,7 +45,7 @@ namespace AvansDevOps.Domain
                     developers.AddLast(developer);
                 }
             }
-            developers.Distinct();
+            //developers.Distinct();
             return developers;
         }
 
@@ -60,7 +60,7 @@ namespace AvansDevOps.Domain
                     testers.AddLast(tester);
                 }
             }
-            testers.Distinct();
+            //testers.Distinct();
             return testers;
         }
 
