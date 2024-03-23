@@ -4,15 +4,12 @@
     {
         void IVisitor.VisitPipeline(Pipeline pipeline)
         {
-            Console.WriteLine("===================================");
-            Console.WriteLine($"Execution of: {pipeline.GetName()}");
-            Console.WriteLine("===================================");
+            Console.WriteLine($"===================================\nExecution of: {pipeline.GetName()}\n===================================");
         }
 
         void IVisitor.VisitStage(Stage stage)
         {
-            Console.WriteLine();
-            Console.WriteLine($"Stage: {stage.GetName()}");
+            Console.WriteLine($"\nStage: {stage.GetName()}");
         }
 
         void IVisitor.VisitCommand(Command command)
