@@ -17,7 +17,7 @@ namespace AvansDevOps.Tests.ProjectTests
         [InlineData(TypeOfSprints.RELEASESPRINT)]
         internal void CreatesSprint_AddsASprintOfTheCorrectConcreteTypeToTheSpintsListInTheProject(TypeOfSprints typeOfSprint)
         {
-            // Dirty code but can not be fixed :(
+            // Dirty code but can not be fixed :( 
             Type concreteTypeOfSprint = null;
             if (typeOfSprint == TypeOfSprints.PARTIALPRODUCTSPRINT)
             {
