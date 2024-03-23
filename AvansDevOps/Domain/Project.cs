@@ -5,8 +5,8 @@ namespace AvansDevOps.Domain
     internal class Project
     {
         private ProductOwner productOwner;
-        private LinkedList<BacklogItem> projectBacklog = new LinkedList<BacklogItem>();
-        private LinkedList<Sprint> sprints = new LinkedList<Sprint>();
+        private readonly LinkedList<BacklogItem> projectBacklog = new LinkedList<BacklogItem>();
+        private readonly LinkedList<Sprint> sprints = new LinkedList<Sprint>();
         private readonly SprintFactory sprintFactory = new SprintFactory();
 
         public Project(ProductOwner productOwner, LinkedList<BacklogItem> projectBacklog)
@@ -30,9 +30,31 @@ namespace AvansDevOps.Domain
             return this.sprints.Last!.Value.GetScrumMaster();
         }
 
-        public void CreateSprint(TypeOfSprints typeOfSprint, string name, DateTime startDate, DateTime endDate, ScrumMaster scrumMaster, LinkedList<Developer> developers, LinkedList<Tester> testers, LinkedList<BacklogItem> backlog)
+        public void CreateSprint(TypeOfSprints typeOfSprint, string name, DateTime startDate, DateTime endDate, ScrumMaster scrumMaster, LinkedList<Developer> developers, LinkedList<Tester> testers, LinkedList<BacklogItem> backlogtems)
         {
-            this.sprints.AddLast(this.sprintFactory.CreateSprint(this, typeOfSprint, name, startDate, endDate, scrumMaster, developers, testers, backlog));
+            this.sprints.AddLast(this.sprintFactory.CreateSprint(this, typeOfSprint, name, startDate, endDate, scrumMaster, developers, testers, backlogtems));
+        }
+
+        public void AddBacklogItem(BacklogItem backlogItem)
+        {
+            this.projectBacklog.AddLast(backlogItem);
+        }
+
+        public BacklogItem GetBacklogItem(string name)
+        {
+            foreach (BacklogItem backlogItem in projectBacklog)
+            {
+                if (backlogItem.GetName() == name)
+                {
+                    return backlogItem;
+                }
+            }
+            return null;
+        }
+
+        public LinkedList<BacklogItem> GetBacklogItems()
+        {
+            return this.projectBacklog;
         }
 
         public LinkedList<Developer> GetDevelopers()
@@ -60,6 +82,16 @@ namespace AvansDevOps.Domain
                 }
             }
             return testers;
+        }
+
+        public Sprint GetMostRecentSprint()
+        {
+            if (sprints.Last != null)
+            {
+                return sprints.Last.Value;
+
+            }
+            return null;
         }
 
 
