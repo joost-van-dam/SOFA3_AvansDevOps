@@ -14,7 +14,7 @@ namespace AvansDevOps.Domain
         private LinkedList<Developer> developers;
         private LinkedList<Tester> testers;
         private LinkedList<BacklogItem> backlog;
-        private LinkedList<ISprintObserver> observers = new LinkedList<ISprintObserver>();
+        private readonly LinkedList<ISprintObserver> observers = new LinkedList<ISprintObserver>();
 
 
         protected Sprint(Project project, string name, DateTime startDate, DateTime endDate, ScrumMaster scrumMaster, LinkedList<Developer> developers, LinkedList<Tester> testers, LinkedList<BacklogItem> backlog)
