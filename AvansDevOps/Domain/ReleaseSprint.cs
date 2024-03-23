@@ -55,7 +55,7 @@ namespace AvansDevOps.Domain
             this.sprintState = sprintState;
         }
 
-        public override void Notify(Sprint sprint, ISprintState newState)
+        public override void Notify(Sprint sprint, ISprintState oldState)
         {
             throw new NotImplementedException();
         }

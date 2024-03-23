@@ -54,13 +54,13 @@ namespace AvansDevOps.Domain
         }
 
         // moeten dit abstacte methodes zijn of gewoon normale methodes?
-        //public void Notify(Sprint sprint, ISprintState newState)
+        //public void Notify(Sprint sprint, ISprintState oldState)
         //{
         //    foreach (IBacklogItemObserver observer in this.observers)
         //    {
         //        observer.Update(sprint, oldState);
         //    }
         //}
-        public abstract void Notify(Sprint sprint, ISprintState newState);
+        public abstract void Notify(Sprint sprint, ISprintState oldState);
     }
 }
