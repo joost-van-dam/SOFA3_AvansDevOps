@@ -1,4 +1,4 @@
-name: SonarCloud automatisch gemaakt met de sonarcloud website
+name: SonarCloud automatisch gemaakt met de sonarcloud website.
 on:
   push:
     branches:
