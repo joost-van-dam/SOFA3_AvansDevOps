@@ -20,7 +20,10 @@ namespace AvansDevOps.Domain.Fora
 
         public void AddCommentOnThread(Comment comment)
         {
-            comments.AddLast(comment);
+            if (CheckIfThreadIsOpen())
+            {
+                comments.AddLast(comment);
+            }
         }
 
         public void RemoveCommentOfThread(Comment comment)
@@ -29,9 +32,14 @@ namespace AvansDevOps.Domain.Fora
 
         }
 
-        internal bool checkIfThreadIsOpen()
+        internal bool CheckIfThreadIsOpen()
         {
-            return backlogItem.GetState() is BacklogItemDoneState;
+            return backlogItem.GetState() is not BacklogItemDoneState;
+        }
+
+        public LinkedList<Comment> GetComments()
+        {
+            return comments;
         }
 
 
