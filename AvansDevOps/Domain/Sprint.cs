@@ -1,6 +1,9 @@
 ﻿using AvansDevOps.Domain.ObserverPattern.SprintObserver;
 using AvansDevOps.Domain.People;
 using AvansDevOps.Domain.States.Abstracts;
+using AvansDevOps.Domain.Strategy;
+using AvansDevOps.Domain.Strategy.Abstracts;
+using AvansDevOps.Domain.StrategyPattern;
 
 namespace AvansDevOps.Domain
 {
@@ -15,6 +18,7 @@ namespace AvansDevOps.Domain
         private LinkedList<Tester> testers;
         private LinkedList<BacklogItem> backlog;
         private readonly LinkedList<ISprintObserver> observers = new LinkedList<ISprintObserver>();
+        private ISprintRapportExportStrategy sprintRapportExportStrategy;
 
 
         protected Sprint(Project project, string name, DateTime startDate, DateTime endDate, ScrumMaster scrumMaster, LinkedList<Developer> developers, LinkedList<Tester> testers, LinkedList<BacklogItem> backlog)
@@ -27,6 +31,27 @@ namespace AvansDevOps.Domain
             this.developers = developers;
             this.testers = testers;
             this.backlog = backlog;
+            this.sprintRapportExportStrategy = new SprintPDFRapportExportStrategy(this); //default
+        }
+
+        internal ISprintRapportExportStrategy GetSprintRapportExportStrategy()
+        {
+            return this.sprintRapportExportStrategy;
+        }
+
+        internal void ChangeSprintRapportExportStrategy(SprintRapportExportTypes sprintRapportExportType)
+        {
+            this.sprintRapportExportStrategy = sprintRapportExportType switch
+            {
+                SprintRapportExportTypes.PDF => new SprintPDFRapportExportStrategy(this),
+                SprintRapportExportTypes.PNG => new SprintPNGRapportExportStrategy(this),
+                _ => throw new NotImplementedException(),
+            };
+        }
+
+        internal void ExportSprintRapport()
+        {
+            this.sprintRapportExportStrategy.ExportSprintRapport();
         }
 
         internal LinkedList<Developer> GetDevelopers()

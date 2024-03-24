@@ -8,7 +8,6 @@ namespace AvansDevOps.Domain
         private readonly LinkedList<BacklogItem> projectBacklog = new LinkedList<BacklogItem>();
         private readonly LinkedList<Sprint> sprints = new LinkedList<Sprint>();
         private readonly SprintFactory sprintFactory = new SprintFactory();
-
         public Project(ProductOwner productOwner, LinkedList<BacklogItem> projectBacklog)
         {
             this.productOwner = productOwner;
