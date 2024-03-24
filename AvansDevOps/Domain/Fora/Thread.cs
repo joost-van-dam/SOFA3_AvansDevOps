@@ -16,8 +16,6 @@ namespace AvansDevOps.Domain.Fora
             this.backlogItem = backlogItem;
         }
 
-
-
         public void AddCommentOnThread(Comment comment)
         {
             if (CheckIfThreadIsOpen())

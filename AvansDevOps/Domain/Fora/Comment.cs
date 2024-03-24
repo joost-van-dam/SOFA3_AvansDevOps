@@ -42,7 +42,15 @@ namespace AvansDevOps.Domain.Fora
 
         internal void AddCommmetOnComment(Comment comment)
         {
-            comments.AddLast(comment);
+            if (thread.CheckIfThreadIsOpen())
+            {
+                comments.AddLast(comment);
+            }
+        }
+
+        public LinkedList<Comment> GetComments()
+        {
+            return comments;
         }
     }
 }
