@@ -44,8 +44,6 @@ namespace AvansDevOps.Domain
             this.sprintState.ChangeEndDate(endDate);
         }
 
-
-
         internal void SetState(IPartialProductSprintState sprintState)
         {
             this.sprintState = sprintState;

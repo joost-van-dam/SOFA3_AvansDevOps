@@ -33,6 +33,29 @@ namespace AvansDevOps.Domain
             this.sprintRapportExportStrategy = new SprintPDFRapportExportStrategy(); //default
         }
 
+        protected Sprint(Project project, string name, DateTime startDate, DateTime endDate, ScrumMaster scrumMaster, LinkedList<Developer> developers, LinkedList<Tester> testers)
+        {
+            this.project = project;
+            this.name = name;
+            this.startDate = startDate;
+            this.endDate = endDate;
+            this.scrumMaster = scrumMaster;
+            this.developers = developers;
+            this.testers = testers;
+            this.backlog = new LinkedList<BacklogItem>();
+            this.sprintRapportExportStrategy = new SprintPDFRapportExportStrategy(); //default
+        }
+
+        internal void AddBacklogItem(BacklogItem backlogItem)
+        {
+            this.backlog.AddLast(backlogItem);
+        }
+
+        internal void RemoveBacklogItem(BacklogItem backlogItem)
+        {
+            this.backlog.Remove(backlogItem);
+        }
+
         internal ISprintRapportExportStrategy GetSprintRapportExportStrategy()
         {
             return this.sprintRapportExportStrategy;
@@ -61,6 +84,11 @@ namespace AvansDevOps.Domain
         internal ScrumMaster GetScrumMaster()
         {
             return this.scrumMaster;
+        }
+
+        internal Project GetProject()
+        {
+            return this.project;
         }
 
         public void Subscribe(ISprintObserver observer)

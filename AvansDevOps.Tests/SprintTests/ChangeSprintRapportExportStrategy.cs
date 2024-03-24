@@ -40,41 +40,5 @@ namespace AvansDevOps.Tests.SprintTests
         }
 
 
-
-        //[Theory]
-        //[InlineData(TypeOfSprints.PARTIALPRODUCTSPRINT)]
-        //[InlineData(TypeOfSprints.RELEASESPRINT)]
-        //internal void CreatesSprint_AddsASprintOfTheCorrectConcreteTypeToTheSpintsListInTheProject(TypeOfSprints typeOfSprint)
-        //{
-        //    // Dirty code but can not be fixed :( 
-        //    Type expectedConcreteTypeOfSprint = null;
-        //    if (typeOfSprint == TypeOfSprints.PARTIALPRODUCTSPRINT)
-        //    {
-        //        expectedConcreteTypeOfSprint = typeof(PartialProductSprint);
-        //    }
-        //    else if (typeOfSprint == TypeOfSprints.RELEASESPRINT)
-        //    {
-        //        expectedConcreteTypeOfSprint = typeof(ReleaseSprint);
-        //    }
-
-        //    // Arrange
-        //    ProductOwner productOwner = new ProductOwner("Jan", "Jansen", "janjansen@avansdevops.nl", new List<NotificationPlatformPreferences> { NotificationPlatformPreferences.EMAIL });
-        //    Project project = new Project(productOwner, new LinkedList<BacklogItem>());
-
-
-        //    String name = "Sprint 1";
-        //    DateTime startDate = DateTime.Now;
-        //    DateTime endDate = DateTime.Now.AddDays(14);
-        //    ScrumMaster scrumMaster = new ScrumMaster("Piet", "Pietersen", "pietpietersen@avansdevops.nl", new List<NotificationPlatformPreferences> { NotificationPlatformPreferences.EMAIL });
-        //    LinkedList<Developer> developers = new LinkedList<Developer>();
-        //    LinkedList<Tester> testers = new LinkedList<Tester>();
-        //    LinkedList<BacklogItem> backlogitems = new LinkedList<BacklogItem>();
-
-        //    // Act
-        //    project.CreateSprint(typeOfSprint, name, startDate, endDate, scrumMaster, developers, testers, backlogitems);
-
-        //    // Assert
-        //    project.GetMostRecentSprint().Should().BeOfType(expectedConcreteTypeOfSprint);
-        //}
     }
 }

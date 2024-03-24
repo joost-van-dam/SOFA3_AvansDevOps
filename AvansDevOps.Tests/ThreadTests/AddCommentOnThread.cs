@@ -22,10 +22,11 @@ namespace AvansDevOps.Tests.ThreadTests
         [InlineData(typeof(BacklogItemDefinitionOfDoneRejectedState), 1)]
         internal void AddCommentOnThread_ShouldAddCommentToThreadIfBacklogItemStatusIsNotDone(Type backlogItemState, int expectedComments)
         {
+            Mock<Sprint> sprintMock = new Mock<Sprint>(null, null, null, null, null, null, null, null);
             // Arrange
             Mock<Developer> developerMock = new Mock<Developer>(null, null, null, null);
             //backlogItemMock.Setup(x => x.GetState()).Returns((IBacklogItemState)Activator.CreateInstance(backlogItemState, backlogItemMock.Object));
-            BacklogItem backlogItem = new BacklogItem("BacklogItem 1", "Description of BacklogItem 1", developerMock.Object, new LinkedList<BacklogItemActivity>());
+            BacklogItem backlogItem = new BacklogItem(sprintMock.Object, "BacklogItem 1", "Description of BacklogItem 1", developerMock.Object, new LinkedList<BacklogItemActivity>());
 
             Forum forum = new Forum();
             AvansDevOps.Domain.Fora.Thread thread = new AvansDevOps.Domain.Fora.Thread("Thread topic: een rode of blauwe banner", developerMock.Object, backlogItem);

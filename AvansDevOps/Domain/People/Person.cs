@@ -31,5 +31,10 @@
             return this.email;
         }
 
+        public List<NotificationPlatformPreferences> GetPreferences()
+        {
+            return this.preferences;
+        }
+
     }
 }

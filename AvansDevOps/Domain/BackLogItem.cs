@@ -8,6 +8,7 @@ namespace AvansDevOps.Domain
 {
     internal class BacklogItem : IObservableBacklogItem
     {
+        private Sprint sprint;
         private string name { get; set; }
         private string description { get; set; }
         private Developer developer { get; set; }
@@ -16,8 +17,9 @@ namespace AvansDevOps.Domain
 
         private readonly LinkedList<IBacklogItemObserver> observers = new LinkedList<IBacklogItemObserver>();
 
-        public BacklogItem(string name, string description, Developer developer, LinkedList<BacklogItemActivity> backlogItemActivities)
+        public BacklogItem(Sprint sprint, string name, string description, Developer developer, LinkedList<BacklogItemActivity> backlogItemActivities)
         {
+            this.sprint = sprint;
             this.name = name;
             this.description = description;
             this.developer = developer;
@@ -33,6 +35,46 @@ namespace AvansDevOps.Domain
         public void RemoveBacklogItemActivity(BacklogItemActivity backlogItemActivity)
         {
             this.backlogItemActivities.Remove(backlogItemActivity);
+        }
+
+        internal void SetTodoState()
+        {
+            this.backlogItemState.SetTodoStatus();
+        }
+
+        internal void SetDoingState()
+        {
+            this.backlogItemState.SetDoingStatus();
+        }
+
+        internal void SetReadyForTestingState()
+        {
+            this.backlogItemState.SetReadyForTestingStatus();
+        }
+
+        internal void SetTestingState()
+        {
+            this.backlogItemState.SetTestingStatus();
+        }
+
+        internal void SetTestedState()
+        {
+            this.backlogItemState.SetTestedStatus();
+        }
+
+        internal void SetDoneState()
+        {
+            this.backlogItemState.SetDoneStatus();
+        }
+
+        public Sprint GetSprint()
+        {
+            return this.sprint;
+        }
+
+        public Developer GetDeveloper()
+        {
+            return this.developer;
         }
 
         internal void SetState(IBacklogItemState state)
