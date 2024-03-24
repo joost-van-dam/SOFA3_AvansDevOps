@@ -2,6 +2,6 @@
 {
     internal interface ISprintRapportExportStrategy
     {
-        void ExportSprintRapport();
+        void ExportSprintRapport(Sprint sprint);
     }
 }

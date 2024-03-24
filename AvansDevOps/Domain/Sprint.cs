@@ -3,7 +3,6 @@ using AvansDevOps.Domain.People;
 using AvansDevOps.Domain.States.Abstracts;
 using AvansDevOps.Domain.Strategy;
 using AvansDevOps.Domain.Strategy.Abstracts;
-using AvansDevOps.Domain.StrategyPattern;
 
 namespace AvansDevOps.Domain
 {
@@ -31,7 +30,7 @@ namespace AvansDevOps.Domain
             this.developers = developers;
             this.testers = testers;
             this.backlog = backlog;
-            this.sprintRapportExportStrategy = new SprintPDFRapportExportStrategy(this); //default
+            this.sprintRapportExportStrategy = new SprintPDFRapportExportStrategy(); //default
         }
 
         internal ISprintRapportExportStrategy GetSprintRapportExportStrategy()
@@ -39,19 +38,15 @@ namespace AvansDevOps.Domain
             return this.sprintRapportExportStrategy;
         }
 
-        internal void ChangeSprintRapportExportStrategy(SprintRapportExportTypes sprintRapportExportType)
+        internal void ChangeSprintRapportExportStrategy(ISprintRapportExportStrategy sprintRapportExportStrategy)
         {
-            this.sprintRapportExportStrategy = sprintRapportExportType switch
-            {
-                SprintRapportExportTypes.PDF => new SprintPDFRapportExportStrategy(this),
-                SprintRapportExportTypes.PNG => new SprintPNGRapportExportStrategy(this),
-                _ => throw new NotImplementedException(),
-            };
+            this.sprintRapportExportStrategy = sprintRapportExportStrategy;
+
         }
 
         internal void ExportSprintRapport()
         {
-            this.sprintRapportExportStrategy.ExportSprintRapport();
+            this.sprintRapportExportStrategy.ExportSprintRapport(this);
         }
 
         internal LinkedList<Developer> GetDevelopers()

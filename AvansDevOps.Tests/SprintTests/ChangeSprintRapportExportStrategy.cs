@@ -1,7 +1,7 @@
 ﻿using AvansDevOps.Domain;
 using AvansDevOps.Domain.People;
 using AvansDevOps.Domain.Strategy;
-using AvansDevOps.Domain.StrategyPattern;
+using AvansDevOps.Domain.Strategy.Abstracts;
 using FluentAssertions;
 using Moq;
 
@@ -11,21 +11,10 @@ namespace AvansDevOps.Tests.SprintTests
     {
 
         [Theory]
-        [InlineData(SprintRapportExportTypes.PDF)]
-        [InlineData(SprintRapportExportTypes.PNG)]
-        internal void ChangeSprintRapportExportStrategy_ShouldSetExportStrategyToRightStrategy(SprintRapportExportTypes sprintRapportExportTypes)
+        [InlineData(typeof(SprintPDFRapportExportStrategy))]
+        [InlineData(typeof(SprintPNGRapportExportStrategy))]
+        internal void ChangeSprintRapportExportStrategy_ShouldSetExportStrategyToRightStrategy(Type strategy)
         {
-            // Dirty code but can not be fixed :( 
-            Type expectedSprintRapportExportStrategy = null;
-            if (sprintRapportExportTypes == SprintRapportExportTypes.PDF)
-            {
-                expectedSprintRapportExportStrategy = typeof(SprintPDFRapportExportStrategy);
-            }
-            else if (sprintRapportExportTypes == SprintRapportExportTypes.PNG)
-            {
-                expectedSprintRapportExportStrategy = typeof(SprintPNGRapportExportStrategy);
-            }
-
             // Arrange
             Mock<Project> projectMock = new Mock<Project>(null, null);
 
@@ -42,10 +31,10 @@ namespace AvansDevOps.Tests.SprintTests
             Sprint sprint = sprintFactory.CreateSprint(projectMock.Object, TypeOfSprints.PARTIALPRODUCTSPRINT, name, startDate, endDate, scrumMaster, developers, testers, backlogitems);
 
             // Act
-            sprint.ChangeSprintRapportExportStrategy(sprintRapportExportTypes);
+            sprint.ChangeSprintRapportExportStrategy((ISprintRapportExportStrategy)Activator.CreateInstance(strategy));
 
             // Assert
-            sprint.GetSprintRapportExportStrategy().Should().BeOfType(expectedSprintRapportExportStrategy);
+            sprint.GetSprintRapportExportStrategy().Should().BeOfType(strategy);
 
 
         }
